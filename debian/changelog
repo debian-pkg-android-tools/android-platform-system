@@ -1,0 +1,49 @@
+android-platform-system (5.1.1.8-1) UNRELEASED; urgency=low
+
+  * New upstream release of tag "android-5.1.1_r8"
+  * Change version scheme to follow upstream
+  * New binary packages: adb and fastboot
+  * Add myself as uploaders
+
+ -- Kai-Chung Yan <seamlikok@gmail.com>  Mon, 13 Jul 2015 15:45:30 +0800
+
+android-platform-system-core (21-6) unstable; urgency=low
+
+  [Simon McVittie]
+  * fix missing android_atomic_* symbols on i386 (Closes: #769646)
+
+ -- Hans-Christoph Steiner <hans@eds.org>  Fri, 28 Nov 2014 13:00:09 +0100
+
+android-platform-system-core (21-5) unstable; urgency=low
+
+  [Simon McVittie]
+  * For each library where libwhatever.so moved from android-libwhatever
+    to android-libwhatever-dev, the -dev Breaks/Replaces the runtime library
+    (Closes: #770328)
+
+ -- Hans-Christoph Steiner <hans@eds.org>  Tue, 25 Nov 2014 12:43:50 +0100
+
+android-platform-system-core (21-4) unstable; urgency=low
+
+  * add versions to shared library names so dh can do auto dep detection
+  * dh_shlibdeps misses libcutils dep on liblog, so force manually
+
+ -- Hans-Christoph Steiner <hans@eds.org>  Tue, 18 Nov 2014 13:05:59 +0100
+
+android-platform-system-core (21-3) unstable; urgency=low
+
+  * fix build to work on linux-any
+
+ -- Hans-Christoph Steiner <hans@eds.org>  Wed, 22 Oct 2014 16:00:29 -0400
+
+android-platform-system-core (21-2) unstable; urgency=low
+
+  * make android-system-dev available on all archs
+
+ -- Hans-Christoph Steiner <hans@eds.org>  Wed, 22 Oct 2014 11:27:14 -0400
+
+android-platform-system-core (21-1) unstable; urgency=low
+
+  * Initial release. (Closes: #747926)
+
+ -- Hans-Christoph Steiner <hans@eds.org>  Tue, 15 Jul 2014 17:09:00 -0400

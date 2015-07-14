@@ -1,0 +1,14 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	make -f debian/Makefile
+
+override_dh_auto_clean:
+	dh_auto_clean
+	make clean -f debian/Makefile
+
+override_dh_shlibdeps:
+	dh_shlibdeps -l$(CURDIR)/debian/android-liblog/usr/lib/android

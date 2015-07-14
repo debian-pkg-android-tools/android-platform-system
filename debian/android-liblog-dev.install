@@ -1,0 +1,2 @@
+include/log/    usr/include/android/
+liblog/liblog.a usr/lib/android/

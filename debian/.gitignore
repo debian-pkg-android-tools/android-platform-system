@@ -1,0 +1,13 @@
+files
+*.debhelper
+*.substvars
+*.log
+android-system-dev/
+android-libcutils-dev/
+android-libcutils/
+android-liblog-dev/
+android-liblog/
+android-libzipfile-dev/
+android-libzipfile/
+adb/
+fastboot/

@@ -1,0 +1,2 @@
+include/zipfile         usr/include/android/
+libzipfile/libzipfile.a usr/lib/android/
