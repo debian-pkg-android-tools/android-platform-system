@@ -1,4 +1,4 @@
-include ../debian/android_includes.mk
+include ../../debian/android_includes.mk
 
 NAME = libzipfile
 SOURCES = centraldir.c zipfile.c

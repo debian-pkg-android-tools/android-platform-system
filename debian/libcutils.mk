@@ -1,4 +1,4 @@
-include ../debian/android_includes.mk
+include ../../debian/android_includes.mk
 
 NAME = libcutils
 SOURCES = hashmap.c \
@@ -20,7 +20,7 @@ SOURCES = hashmap.c \
 OBJECTS = $(SOURCES:.c=.o)
 INCLUDES = $(ANDROID_INCLUDES) -I../include
 LOCAL_CFLAGS = -DANDROID_SMP=0 -fPIC -c
-LOCAL_LDFLAGS = -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android -L../liblog -lpthread -llog -lbsd
+LOCAL_LDFLAGS = -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android -L../liblog/ -lpthread -llog -lbsd
 
 build: $(OBJECTS)
 	cc $^ -o $(NAME).so.5.1.1.8 -Wl,-soname,$(NAME).so.5 $(LDFLAGS) $(LOCAL_LDFLAGS)

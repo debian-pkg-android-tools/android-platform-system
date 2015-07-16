@@ -1,4 +1,4 @@
-include ../debian/android_includes.mk
+include ../../debian/android_includes.mk
 
 NAME = liblog
 SOURCES = event_tag_map.c fake_log_device.c logd_write.c logprint.c uio.c
@@ -12,7 +12,7 @@ build: $(OBJECTS)
 	ar rs $(NAME).a $^
 
 clean:
-	rm -f *.so* *.a *.o
+	rm -f *.so.* *.a *.o
 
 $(OBJECTS): %.o: %.c
 	cc $< -o $@ $(CFLAGS) $(CPPFLAGS) $(INCLUDES) $(LOCAL_CFLAGS)

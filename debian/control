@@ -1,5 +1,5 @@
 Source: android-platform-system
-Section: devel
+Section: utils
 Priority: extra
 Maintainer: Android tools Maintainer <android-tools-devel@lists.alioth.debian.org>
 Uploaders: Stefan Handschuh <handschuh.stefan@googlemail.com>,
@@ -97,10 +97,15 @@ Depends: android-libcutils (>= ${binary:Version}),
 Breaks: android-tools-adb
 Replaces: android-tools-adb
 Description: Android Debug Bridge
- a versatile command line tool that lets you communicate with an emulator
+ A versatile command line tool that lets you communicate with an emulator
  instance or connected Android-powered device.
 
 Package: fastboot
 Section: utils
 Architecture: linux-any
-Depends:
+Depends: android-libext4-utils,
+         android-libsparse,
+         android-libzipfile,
+         zlib1g
+Breaks: android-tools-fastboot
+Replaces: android-tools-fastboot
