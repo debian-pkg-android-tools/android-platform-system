@@ -103,10 +103,20 @@ Description: Android Debug Bridge
 Package: fastboot
 Section: utils
 Architecture: linux-any
-Depends: android-libext4-utils,
-         android-f2fs-utils,
-         android-libsparse,
-         android-libzipfile,
+Depends: android-libext4-utils (>= ${binary:Version}),
+         android-f2fs-utils (>= ${binary:Version}),
+         android-libsparse (>= ${binary:Version}),
+         android-libzipfile (>= ${binary:Version}),
          zlib1g
 Breaks: android-tools-fastboot
 Replaces: android-tools-fastboot
+
+Package: android-f2fs-utils
+Section:libs
+Architecture: linux-any
+Depends:
+
+Package: android-f2fs-utils-dev
+Section: libdevel
+Architecture: linux-any
+Depends: android-f2fs-utils (= ${binary:Version})
