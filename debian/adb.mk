@@ -29,7 +29,7 @@ build: $(OBJECTS)
 	cc $^ -o $(NAME) $(LDFLAGS) $(LOCAL_LDFLAGS)
 
 clean:
-	rm -f $(NAME) *.a *.o
+	rm -f $(NAME) *.o
 
 $(OBJECTS): %.o: %.c
 	cc $< -o $@ $(CFLAGS) $(CPPFLAGS) $(INCLUDES) $(LOCAL_CFLAGS)
