@@ -28,7 +28,7 @@ build: $(OBJECTS)
 	ar rs $(NAME).a $^
 
 clean:
-	rm -f *.so* *.a *.o
+	rm -f *.so.* *.a *.o
 
 $(OBJECTS): %.o: %.c
 	cc $< -o $@ $(CFLAGS) $(CPPFLAGS) $(INCLUDES) $(LOCAL_CFLAGS)

@@ -3,9 +3,11 @@ android-platform-system (5.1.1.8-1) UNRELEASED; urgency=low
   * New upstream release of tag "android-5.1.1_r8"
   * Upstream composed of platform/system/core and platform/system/extra
   * Change version scheme to follow upstream
+  * Makefiles independent from Quilt
   * New binary packages:
       - adb
       - fastboot
+      - android-libsparse(-dev)
       - android-f2fs-utils(-dev)
   * Add myself as uploaders
 

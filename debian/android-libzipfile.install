@@ -1,1 +1,1 @@
-core/libzipfile/libzipfile.so*     usr/lib/android/
+core/libzipfile/*.so.*     usr/lib/android/

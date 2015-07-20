@@ -1,10 +1,10 @@
 include ../../debian/android_includes.mk
 
-NAME = libzipfile
+NAME = libsparse
 VERSION = $(shell cat ../../debian/UPSTREAM_VERSION)
-SOURCES = centraldir.c zipfile.c
+SOURCES = backed_block.c output_file.c sparse.c sparse_crc32.c sparse_err.c sparse_read.c
 OBJECTS = $(SOURCES:.c=.o)
-INCLUDES = $(ANDROID_INCLUDES) -I../include
+INCLUDES = $(ANDROID_INCLUDES) -I../include -Iinclude
 LOCAL_CFLAGS = -DFAKE_LOG_DEVICE=1 -fPIC -c
 LOCAL_LDFLAGS = -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android -lz
 

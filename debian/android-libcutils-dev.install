@@ -1,2 +1,2 @@
-core/include/cutils/       usr/include/android/
-core/libcutils/libcutils.a usr/lib/android/
+core/include/cutils/ usr/include/android/
+core/libcutils/*.a   usr/lib/android/

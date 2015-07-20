@@ -8,6 +8,8 @@ android-libcutils-dev/
 android-libcutils/
 android-liblog-dev/
 android-liblog/
+android-libsparse-dev/
+android-libsparse/
 android-libzipfile-dev/
 android-libzipfile/
 android-system-dev/

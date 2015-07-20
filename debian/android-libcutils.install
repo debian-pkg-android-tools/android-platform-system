@@ -1,1 +1,1 @@
-core/libcutils/libcutils.so*     usr/lib/android/
+core/libcutils/*.so.*     usr/lib/android/
