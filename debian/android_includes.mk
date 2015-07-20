@@ -1,20 +1,20 @@
 ifeq ($(shell uname -m), x86_64)
-  ANDROID_INCLUDES = -include /usr/include/android/arch/linux-x86/AndroidConfig.h
+  ANDROID_INCLUDES = -include arch/linux-x86/AndroidConfig.h
 endif
 ifeq ($(shell uname -m), amd64)
-  ANDROID_INCLUDES = -include /usr/include/android/arch/linux-x86/AndroidConfig.h
+  ANDROID_INCLUDES = -include arch/linux-x86/AndroidConfig.h
 endif
 ifeq ($(shell uname -m), i386)
-  ANDROID_INCLUDES = -include /usr/include/android/arch/linux-x86/AndroidConfig.h
+  ANDROID_INCLUDES = -include arch/linux-x86/AndroidConfig.h
 endif
 ifeq ($(shell uname -m), i486)
-  ANDROID_INCLUDES = -include /usr/include/android/arch/linux-x86/AndroidConfig.h
+  ANDROID_INCLUDES = -include arch/linux-x86/AndroidConfig.h
 endif
 ifeq ($(shell uname -m), i586)
-  ANDROID_INCLUDES = -include /usr/include/android/arch/linux-x86/AndroidConfig.h
+  ANDROID_INCLUDES = -include arch/linux-x86/AndroidConfig.h
 endif
 ifeq ($(shell uname -m), i686)
-  ANDROID_INCLUDES = -include /usr/include/android/arch/linux-x86/AndroidConfig.h
+  ANDROID_INCLUDES = -include arch/linux-x86/AndroidConfig.h
 endif
 ifeq ($(shell uname -m), armel)
   ANDROID_INCLUDES = -include /usr/include/android/arch/linux-arm/AndroidConfig.h

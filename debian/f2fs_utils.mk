@@ -3,7 +3,7 @@ include ../../debian/android_includes.mk
 VERSION = $(shell cat ../../debian/UPSTREAM_VERSION)
 SOURCES = f2fs_utils.c f2fs_ioutils.c f2fs_dlutils.c
 OBJECTS = $(SOURCES:.c=.o)
-INCLUDES = $(ANDROID_INCLUDES) -I../include
+INCLUDES = $(ANDROID_INCLUDES) -I../../core/include/
 LOCAL_CFLAGS = -fPIC -c
 LOCAL_LDFLAGS = -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android -lpthread
 
