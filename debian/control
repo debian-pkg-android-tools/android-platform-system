@@ -5,7 +5,9 @@ Maintainer: Android tools Maintainer <android-tools-devel@lists.alioth.debian.or
 Uploaders: Stefan Handschuh <handschuh.stefan@googlemail.com>,
            Hans-Christoph Steiner <hans@eds.org>,
            Kai-Chung Yan <seamlikok@gmail.com>
-Build-Depends: debhelper (>=9),
+Build-Depends: android-libext2-uuid-dev,
+               android-libf2fs-fmt-dev,
+               debhelper (>=9),
                libbsd-dev,
                libssl-dev,
                zlib1g-dev
@@ -113,7 +115,8 @@ Replaces: android-tools-fastboot
 Package: android-f2fs-utils
 Section:libs
 Architecture: linux-any
-Depends: android-libext2-uuid (>= ${binary:Version}),
+Depends: android-libext2-uuid,
+         android-libf2fs-fmt,
          android-libsparse (>= ${binary:Version}),
          zlib1g
 

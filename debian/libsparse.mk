@@ -6,7 +6,7 @@ SOURCES = backed_block.c output_file.c sparse.c sparse_crc32.c sparse_err.c spar
 OBJECTS = $(SOURCES:.c=.o)
 INCLUDES = $(ANDROID_INCLUDES) -I../include -Iinclude
 LOCAL_CFLAGS = -DFAKE_LOG_DEVICE=1 -fPIC -c
-LOCAL_LDFLAGS = -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android -lz
+LOCAL_LDFLAGS = -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android -lz -lpthread
 
 build: $(OBJECTS)
 	cc $^ -o $(NAME).so.$(VERSION) -Wl,-soname,$(NAME).so.5 $(LDFLAGS) $(LOCAL_LDFLAGS)
