@@ -1,0 +1,15 @@
+Description: The filename of the library f2fs_dlutils.so will dlopen is
+             changed.
+Author: Kai-Chung Yan <seamlikok@gmail.com>
+Last-Update: 2015-07-21
+--- a/extra/f2fs_utils/f2fs_dlutils.c
++++ b/extra/f2fs_utils/f2fs_dlutils.c
+@@ -35,7 +35,7 @@
+ 
+ #include <f2fs_fs.h>
+ #include <f2fs_format_utils.h>
+-#define F2FS_DYN_LIB "libf2fs_fmt_host_dyn.so"
++#define F2FS_DYN_LIB "/usr/lib/android/libf2fs_fmt.so"
+ 
+ int (*f2fs_format_device_dl)(void);
+ void (*f2fs_init_configuration_dl)(struct f2fs_configuration *);
