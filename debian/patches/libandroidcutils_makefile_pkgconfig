@@ -7,7 +7,7 @@ Description:
 Last-Update: 2015-07-13
 
 --- /dev/null
-+++ b/libcutils/dlmalloc.h
++++ b/core/libcutils/dlmalloc.h
 @@ -0,0 +1,35 @@
 +/*
 + * Copyright (C) 2012 The Android Open Source Project
@@ -44,28 +44,28 @@ Last-Update: 2015-07-13
 +#include "upstream-dlmalloc/malloc.h"
 +
 +#endif  // LIBC_BIONIC_DLMALLOC_H_
---- a/libcutils/dlmalloc_stubs.c
-+++ b/libcutils/dlmalloc_stubs.c
+--- a/core/libcutils/dlmalloc_stubs.c
++++ b/core/libcutils/dlmalloc_stubs.c
 @@ -15,6 +15,7 @@
   */
- 
+
  #include "log/log.h"
 +#include "dlmalloc.h"
- 
+
  #define UNUSED __attribute__((__unused__))
- 
+
 --- /dev/null
-+++ b/libcutils/upstream-dlmalloc/malloc.h
++++ b/core/libcutils/upstream-dlmalloc/malloc.h
 @@ -0,0 +1,620 @@
 +/*
 +  Default header file for malloc-2.8.x, written by Doug Lea
 +  and released to the public domain, as explained at
-+  http://creativecommons.org/publicdomain/zero/1.0/ 
-+ 
++  http://creativecommons.org/publicdomain/zero/1.0/
++
 +  This header is for ANSI C/C++ only.  You can set any of
 +  the following #defines before including:
 +
-+  * If USE_DL_PREFIX is defined, it is assumed that malloc.c 
++  * If USE_DL_PREFIX is defined, it is assumed that malloc.c
 +    was also compiled with this option, so all routines
 +    have names starting with "dl".
 +
@@ -131,7 +131,7 @@ Last-Update: 2015-07-13
 +#define dlbulk_free            bulk_free
 +#endif /* USE_DL_PREFIX */
 +
-+#if !NO_MALLINFO 
++#if !NO_MALLINFO
 +#ifndef HAVE_USR_INCLUDE_MALLOC_H
 +#ifndef _MALLOC_H
 +#ifndef MALLINFO_FIELD_TYPE
@@ -312,7 +312,7 @@ Last-Update: 2015-07-13
 +  malloc_set_footprint_limit, or the maximum size_t value if
 +  never set. The returned value reflects a permission. There is no
 +  guarantee that this number of bytes can actually be obtained from
-+  the system.  
++  the system.
 +*/
 +size_t dlmalloc_footprint_limit(void);
 +
@@ -556,7 +556,7 @@ Last-Update: 2015-07-13
 +
 +  malloc_stats prints only the most commonly interesting statistics.
 +  More information can be obtained by calling mallinfo.
-+  
++
 +  malloc_stats is not compiled if NO_MALLOC_STATS is defined.
 +*/
 +void  dlmalloc_stats(void);
@@ -667,7 +667,7 @@ Last-Update: 2015-07-13
 +size_t mspace_max_footprint(mspace msp);
 +size_t mspace_footprint_limit(mspace msp);
 +size_t mspace_set_footprint_limit(mspace msp, size_t bytes);
-+void mspace_inspect_all(mspace msp, 
++void mspace_inspect_all(mspace msp,
 +                        void(*handler)(void *, void *, size_t, void*),
 +                        void* arg);
 +#endif  /* MSPACES */
