@@ -14,8 +14,8 @@ LOCAL_LDFLAGS = -fPIC -rdynamic -Wl,-rpath=/usr/lib/android \
                 -lpthread -ldl -lz \
                 -L../libzipfile/ -lzipfile \
                 -L../../extra/ext4_utils/ -lext4_utils \
-                -L../libsparse/ -lsparse
-                -l../../extra/f2fs_utils/ -lf2fs_utils -lf2fs_ioutils -lf2fs_dlutils
+                -L../libsparse/ -lsparse \
+                -L../../extra/f2fs_utils/ -lf2fs_utils -lf2fs_ioutils -lf2fs_dlutils
 
 build: $(OBJECTS)
 	cc $^ -o $(NAME) $(LDFLAGS) $(LOCAL_LDFLAGS)
