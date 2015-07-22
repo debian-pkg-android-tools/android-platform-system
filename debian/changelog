@@ -6,9 +6,10 @@ android-platform-system (5.1.1.8-1) UNRELEASED; urgency=low
   * Makefiles independent from Quilt
   * New binary packages:
       - adb
-      - fastboot
-      - android-libsparse(-dev)
+      - android-ext4-utils(-dev)
       - android-f2fs-utils(-dev)
+      - android-libsparse(-dev)
+      - fastboot
   * Add myself as uploaders
   * New f2fs_fmt_location.diff: Makes f2fs_dlutils.so dlopen the correct library
   * d/control:

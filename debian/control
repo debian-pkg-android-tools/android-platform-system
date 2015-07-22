@@ -14,7 +14,7 @@ Build-Depends: android-libext2-uuid-dev,
                zlib1g-dev
 Standards-Version: 3.9.6
 Homepage: https://android.googlesource.com/platform/system/core
-Vcs-Git: https://alioth.debian.org/anonscm/git/android-tools/android-platform-system-core.git
+Vcs-Git: http://anonscm.debian.org/android-tools/android-platform-system-core.git
 Vcs-Browser: http://anonscm.debian.org/cgit/android-tools/android-platform-system-core.git
 
 Package: android-system-dev
@@ -95,7 +95,9 @@ Depends: android-libcutils (>= ${binary:Version}),
          android-liblog (>= ${binary:Version}),
          android-libzipfile (>= ${binary:Version}),
          libssl1.0.0,
-         zlib1g
+         zlib1g,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Breaks: android-tools-adb
 Replaces: android-tools-adb
 Description: Android Debug Bridge
@@ -109,7 +111,9 @@ Depends: android-libext4-utils (>= ${binary:Version}),
          android-f2fs-utils (>= ${binary:Version}),
          android-libsparse (>= ${binary:Version}),
          android-libzipfile (>= ${binary:Version}),
-         zlib1g
+         zlib1g,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Breaks: android-tools-fastboot
 Replaces: android-tools-fastboot
 
@@ -119,12 +123,15 @@ Architecture: linux-any
 Depends: android-libext2-uuid,
          android-libf2fs-fmt,
          android-libsparse (>= ${binary:Version}),
-         zlib1g
+         zlib1g,
+         ${misc:Depends},
+         ${shlibs:Depends}
 
 Package: android-f2fs-utils-dev
 Section: libdevel
 Architecture: linux-any
-Depends: android-f2fs-utils (= ${binary:Version})
+Depends: android-f2fs-utils (= ${binary:Version}),
+         ${misc:Depends}
 
 Package: android-libsparse
 Section: libs
@@ -134,4 +141,20 @@ Depends: zlib1g
 Package: android-libsparse-dev
 Section: libdevel
 Architecture: linux-any
-Depends: android-libsparse (= ${binary:Version})
+Depends: android-libsparse (= ${binary:Version}),
+         ${misc:Depends}
+
+Package: android-libext4-utils
+Section: libs
+Architecture: linux-any
+Depends: android-libsparse (>= ${binary:Version}),
+         android-libselinux,
+         zlib1g,
+         ${misc:Depends},
+         ${shlibs:Depends}
+
+Package: android-libext4-utils-dev
+Section: libdevel
+Architecture: linux-any
+Depends: android-libext4-utils (= ${binary:Version}),
+         ${misc:Depends}
