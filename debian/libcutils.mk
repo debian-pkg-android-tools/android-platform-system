@@ -17,7 +17,17 @@ SOURCES = hashmap.c \
           sched_policy.c \
           iosched_policy.c \
           str_parms.c \
-					dlmalloc_stubs.c
+          fs.c \
+          multiuser.c \
+          socket_inaddr_any_server.c \
+          socket_local_client.c \
+          socket_local_server.c \
+          socket_loopback_client.c \
+          socket_loopback_server.c \
+          socket_network_client.c \
+          sockets.c \
+          ashmem-host.c \
+          dlmalloc_stubs.c
 OBJECTS = $(SOURCES:.c=.o)
 INCLUDES = $(ANDROID_INCLUDES) -I../include
 LOCAL_CFLAGS = -DANDROID_SMP=0 -fPIC -c
