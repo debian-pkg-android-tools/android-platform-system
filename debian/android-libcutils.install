@@ -1,1 +1,3 @@
-core/libcutils/*.so.*     usr/lib/android/
+#!/usr/bin/dh-exec
+
+core/libcutils/libcutils.so => usr/lib/android/libcutils.so.${UPSTREAM_VERSION}

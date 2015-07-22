@@ -1,5 +1,7 @@
 #!/usr/bin/make -f
 
+export UPSTREAM_VERSION = $(shell cat debian/UPSTREAM_VERSION)
+
 %:
 	dh $@
 
@@ -9,6 +11,3 @@ override_dh_auto_build:
 override_dh_auto_clean:
 	dh_auto_clean
 	make clean -f debian/Makefile
-
-override_dh_shlibdeps:
-	dh_shlibdeps -l$(CURDIR)/debian/android-liblog/usr/lib/android

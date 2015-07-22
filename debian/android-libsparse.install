@@ -1,1 +1,3 @@
-core/libsparse/*.so.*     usr/lib/android/
+#!/usr/bin/dh-exec
+
+core/libsparse/libsparse.so => usr/lib/android/libsparse.so.${UPSTREAM_VERSION}

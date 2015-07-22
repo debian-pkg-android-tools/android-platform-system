@@ -9,6 +9,7 @@ Build-Depends: android-libext2-uuid-dev,
                android-libf2fs-fmt-dev,
                android-libselinux-dev,
                debhelper (>=9),
+               dh-exec,
                libbsd-dev,
                libssl-dev,
                zlib1g-dev
@@ -116,6 +117,9 @@ Depends: android-libext4-utils (>= ${binary:Version}),
          ${shlibs:Depends}
 Breaks: android-tools-fastboot
 Replaces: android-tools-fastboot
+Description: Android fastboot tool
+ A command line tool for flashing an Android device, boot an Android device to
+ fastboot mode, etc..
 
 Package: android-f2fs-utils
 Section:libs
@@ -126,23 +130,37 @@ Depends: android-libext2-uuid,
          zlib1g,
          ${misc:Depends},
          ${shlibs:Depends}
+Description: Android F2FS utils library
+ This library is only used by Android SDK currently.
 
 Package: android-f2fs-utils-dev
 Section: libdevel
 Architecture: linux-any
 Depends: android-f2fs-utils (= ${binary:Version}),
          ${misc:Depends}
+Description: Android F2FS utils library
+ This library is only used by Android SDK currently.
+ .
+ This package contains the development files.
 
 Package: android-libsparse
 Section: libs
 Architecture: linux-any
-Depends: zlib1g
+Depends: zlib1g,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Description: Android sparse library
+ This library is only used by Android SDK currently.
 
 Package: android-libsparse-dev
 Section: libdevel
 Architecture: linux-any
 Depends: android-libsparse (= ${binary:Version}),
          ${misc:Depends}
+Description: Android sparse library - Development files
+ This library is only used by Android SDK currently.
+ .
+ This package contains the development files.
 
 Package: android-libext4-utils
 Section: libs
@@ -152,9 +170,15 @@ Depends: android-libsparse (>= ${binary:Version}),
          zlib1g,
          ${misc:Depends},
          ${shlibs:Depends}
+Description: Android ext4 library
+ This library is only used by Android SDK currently.
 
 Package: android-libext4-utils-dev
 Section: libdevel
 Architecture: linux-any
 Depends: android-libext4-utils (= ${binary:Version}),
          ${misc:Depends}
+Description: Android ext4 library - Development files
+ This library is only used by Android SDK currently.
+ .
+ This package contains the development files.

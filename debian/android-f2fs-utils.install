@@ -1,1 +1,5 @@
-extra/f2fs_utils/*.so.*     usr/lib/android/
+#!/usr/bin/dh-exec
+
+extra/f2fs_utils/libf2fs_utils.so => usr/lib/android/libf2fs_utils.so.${UPSTREAM_VERSION}
+extra/f2fs_utils/libf2fs_ioutils.so => usr/lib/android/libf2fs_ioutils.so.${UPSTREAM_VERSION}
+extra/f2fs_utils/libf2fs_dlutils.so => usr/lib/android/libf2fs_dlutils.so.${UPSTREAM_VERSION}

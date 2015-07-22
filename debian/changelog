@@ -1,4 +1,4 @@
-android-platform-system (5.1.1.8-1) UNRELEASED; urgency=low
+android-platform-system (1:5.1.1.8-1) UNRELEASED; urgency=low
 
   * New upstream release of tag "android-5.1.1_r8"
   * Upstream composed of platform/system/core and platform/system/extra
@@ -16,6 +16,7 @@ android-platform-system (5.1.1.8-1) UNRELEASED; urgency=low
     - Add (Build-)Depends: android-libext2-uuid(-dev)
     - Add (Build-)Depends: android-libf2fs-fmt(-dev),
     - Add (Build-)Depends: android-libselinux(-dev),
+  * Use dh-exec to rename .so files before installing them
 
  -- Kai-Chung Yan <seamlikok@gmail.com>  Tue, 21 Jul 2015 15:45:30 +0800
 

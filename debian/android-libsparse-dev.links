@@ -1,1 +1,3 @@
-usr/lib/android/libsparse.so.5.1.1.8     usr/lib/android/libsparse.so
+#!/usr/bin/dh-exec
+
+usr/lib/android/libsparse.so.${UPSTREAM_VERSION}     usr/lib/android/libsparse.so

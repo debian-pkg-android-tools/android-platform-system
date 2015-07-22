@@ -1,3 +1,5 @@
-usr/lib/libf2fs_utils.so.5.1.1.8   usr/lib/libf2fs_utils.so
-usr/lib/libf2fs_dlutils.so.5.1.1.8 usr/lib/libf2fs_dlutils.so
-usr/lib/libf2fs_ioutils.so.5.1.1.8 usr/lib/libf2fs_ioutils.so
+#!/usr/bin/dh-exec
+
+usr/lib/libf2fs_utils.so.${UPSTREAM_VERSION}   usr/lib/libf2fs_utils.so
+usr/lib/libf2fs_dlutils.so.${UPSTREAM_VERSION} usr/lib/libf2fs_dlutils.so
+usr/lib/libf2fs_ioutils.so.${UPSTREAM_VERSION} usr/lib/libf2fs_ioutils.so

@@ -17,13 +17,13 @@ SOURCES = adb.c \
           usb_vendors.c \
           fdevent.c
 OBJECTS = $(SOURCES:.c=.o)
-INCLUDES = $(ANDROID_INCLUDES) -I../include -I/usr/include/openssl/ -I./
+INCLUDES = $(ANDROID_INCLUDES) -I../include -I/usr/include/openssl -I.
 LOCAL_CFLAGS = -fPIC -c -DWORKAROUND_BUG6558362 -DADB_HOST=1 -D_XOPEN_SOURCE -D_GNU_SOURCE
-LOCAL_LDFLAGS = -fPIC -rdynamic -Wl,-rpath=/usr/lib/android/ \
+LOCAL_LDFLAGS = -fPIC -rdynamic -Wl,-rpath=/usr/lib/android \
                 -lrt -ldl -lpthread -lz -lcrypto \
-                -L../libzipfile/ -lzipfile \
-                -L../libcutils/ -lcutils \
-                -L../liblog/ -llog
+                -L../libzipfile -lzipfile \
+                -L../libcutils -lcutils \
+                -L../liblog -llog
 
 build: $(OBJECTS)
 	cc $^ -o $(NAME) $(LDFLAGS) $(LOCAL_LDFLAGS)
