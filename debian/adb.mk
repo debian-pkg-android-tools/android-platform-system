@@ -18,9 +18,9 @@ SOURCES = adb.c \
           fdevent.c
 OBJECTS = $(SOURCES:.c=.o)
 INCLUDES = $(ANDROID_INCLUDES) -I../include -I/usr/include/openssl/ -I./
-LOCAL_CFLAGS = -fPIC -c -DADB_HOST=1 -DADB_HOST_ON_TARGET=1 -D_XOPEN_SOURCE -D_GNU_SOURCE
-LOCAL_LDFLAGS = -fPIC -rdynamic -Wl,-rpath=/usr/lib/android \
-                -lpthread -lz -lcrypto \
+LOCAL_CFLAGS = -fPIC -c -DWORKAROUND_BUG6558362 -DADB_HOST=1 -D_XOPEN_SOURCE -D_GNU_SOURCE
+LOCAL_LDFLAGS = -fPIC -rdynamic -Wl,-rpath=/usr/lib/android/ \
+                -lrt -ldl -lpthread -lz -lcrypto \
                 -L../libzipfile/ -lzipfile \
                 -L../libcutils/ -lcutils \
                 -L../liblog/ -llog
