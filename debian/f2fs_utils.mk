@@ -5,10 +5,11 @@ SOURCES = f2fs_utils.c f2fs_ioutils.c f2fs_dlutils.c
 OBJECTS = $(SOURCES:.c=.o)
 INCLUDES = $(ANDROID_INCLUDES) \
            -I../../core/include/ \
-           -I/usr/include/f2fs-tools/ \
-           -I/usr/include/f2fs-tools/mkfs/ \
+           -I/usr/include/android/f2fs-tools/ \
+           -I/usr/include/android/f2fs-tools/mkfs/ \
            -I../../core/libsparse/include/ \
-           -include stddef.h # Defines NULL
+           -include stddef.h \
+           -I/usr/include/android/
 LOCAL_CFLAGS = -fPIC -c
 LOCAL_LDFLAGS = -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android -lpthread
 

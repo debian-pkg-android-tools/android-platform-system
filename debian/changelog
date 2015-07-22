@@ -11,6 +11,10 @@ android-platform-system (5.1.1.8-1) UNRELEASED; urgency=low
       - android-f2fs-utils(-dev)
   * Add myself as uploaders
   * New f2fs_fmt_location.diff: Makes f2fs_dlutils.so dlopen the correct library
+  * d/control:
+    - Add (Build-)Depends: android-libext2-uuid(-dev)
+    - Add (Build-)Depends: android-libf2fs-fmt(-dev),
+    - Add (Build-)Depends: android-libselinux(-dev),
 
  -- Kai-Chung Yan <seamlikok@gmail.com>  Tue, 21 Jul 2015 15:45:30 +0800
 
