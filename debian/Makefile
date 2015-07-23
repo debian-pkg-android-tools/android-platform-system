@@ -2,6 +2,7 @@
 
 build:
 	make -C core/liblog -f ../../debian/liblog.mk
+	make -C libnativehelper -f ../debian/libnativehelper.mk
 	make -C core/libutils -f ../../debian/libutils.mk
 	make -C core/libziparchive -f ../../debian/libziparchive.mk
 	make -C core/libcutils -f ../../debian/libcutils.mk
@@ -14,6 +15,7 @@ build:
 
 clean:
 	make clean -C core/liblog -f ../../debian/liblog.mk
+	make clean -C libnativehelper -f ../debian/libnativehelper.mk
 	make clean -C core/libutils -f ../../debian/libutils.mk
 	make clean -C core/libziparchive -f ../../debian/libziparchive.mk
 	make clean -C core/libcutils -f ../../debian/libcutils.mk

@@ -1,0 +1,3 @@
+#!/usr/bin/dh-exec
+
+libnativehelper/libnativehelper.so => usr/lib/android/libnativehelper.so.${UPSTREAM_VERSION}

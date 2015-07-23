@@ -28,12 +28,12 @@ SOURCES = BasicHashtable.cpp \
           misc.cpp \
           Looper.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
-INCLUDES = $(ANDROID_INCLUDES) -I../include
+INCLUDES = $(ANDROID_INCLUDES) -I../include -I../../libnativehelper/include/nativehelper
 LOCAL_CXXFLAGS = -fPIC -c -DLIBUTILS_NATIVE=1
 LOCAL_LDFLAGS = -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android \
                 -Wl,-soname,$(NAME).so.5 -lpthread -lrt -ldl \
                 -L../liblog -llog \
-                -L/usr/lib/android -lnativehelper
+                -L../../libnativehelper -lnativehelper
 
 build: $(OBJECTS)
 	cc $^ -o $(NAME).so $(LDFLAGS) $(LOCAL_LDFLAGS)

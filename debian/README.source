@@ -31,22 +31,13 @@ Structure of the package's git repository
 -----------------------------------------
 
 The source code has been excerpted form the git repository
- https://android.googlesource.com/platform/system/core
+  * https://android.googlesource.com/platform/system/core
+  * https://android.googlesource.com/platform/system/extra
+  * https://android.googlesource.com/platform/libnativehelper
+  * https://android.googlesource.com/platform/build (only AndroidConfig.h)
 
-The Android project does not release tarballs of their core software. This
-package source repo is configured following git-buildpackage's manual, under
-"When upstream uses GIT/No upstream tarballs":
+We make these repositories into one single source package only to resolve
+circular dependencies.
 
-* http://honk.sigxcpu.org/projects/git-buildpackage/manual-html/gbp.import.html#GBP.IMPORT.UPSTREAM-GIT
-* file:///usr/share/doc/git-buildpackage/manual-html/gbp.import.html#GBP.IMPORT.UPSTREAM-GIT
-
-If you want to update the source git repo for this package to a newer release,
-then fetch the new commits from the upstream git repo:
-
- git remote add upstream https://android.googlesource.com/platform/system/core
- git fetch upstream
-
-debian/gbp.conf is set up to use upstream's release branches and build
-tarballs from there.
-
- -- Hans-Christoph Steiner <hans@eds.org>, Thu, 18 Sep 2014 16:37:50 -0400
+ -- Hans-Christoph Steiner <hans@eds.org>  Thu, 18 Sep 2014 16:37:50 -0400
+ -- Kai-Chung Yan <seamlikok@gmail.com>  Fri, 24 Jul 2015 02:54:45 +0800
