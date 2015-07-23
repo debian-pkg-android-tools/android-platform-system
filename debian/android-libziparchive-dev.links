@@ -1,0 +1,3 @@
+#!/usr/bin/dh-exec
+
+usr/lib/android/libziparchive.so.${UPSTREAM_VERSION}     usr/lib/android/libziparchive.so

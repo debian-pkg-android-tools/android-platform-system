@@ -1,0 +1,3 @@
+#!/usr/bin/dh-exec
+
+usr/lib/android/libutils.so.${UPSTREAM_VERSION}     usr/lib/android/libutils.so.5

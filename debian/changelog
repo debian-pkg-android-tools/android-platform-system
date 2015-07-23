@@ -6,19 +6,22 @@ android-platform-system (1:5.1.1.8-1) UNRELEASED; urgency=low
   * Makefiles independent from Quilt
   * New binary packages:
       - adb
-      - android-ext4-utils(-dev)
+      - android-libext4-utils(-dev)
       - android-f2fs-utils(-dev)
       - android-libsparse(-dev)
+      - android-libutils(-dev)
+      - android-libziparchive(-dev)
       - fastboot
   * Add myself as uploaders
   * New f2fs_fmt_location.diff: Makes f2fs_dlutils.so dlopen the correct library
   * d/control:
     - Add (Build-)Depends: android-libext2-uuid(-dev)
-    - Add (Build-)Depends: android-libf2fs-fmt(-dev),
-    - Add (Build-)Depends: android-libselinux(-dev),
+    - Add (Build-)Depends: android-libf2fs-fmt(-dev)
+    - Add (Build-)Depends: android-libnativehelper(-dev)
+    - Add (Build-)Depends: android-libselinux(-dev)
   * Use dh-exec to rename .so files before installing them
 
- -- Kai-Chung Yan <seamlikok@gmail.com>  Tue, 21 Jul 2015 15:45:30 +0800
+ -- Kai-Chung Yan <seamlikok@gmail.com>  Fri, 24 Jul 2015 01:25:36 +0800
 
 android-platform-system-core (21-6) unstable; urgency=low
 
