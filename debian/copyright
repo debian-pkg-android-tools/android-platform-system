@@ -2,45 +2,138 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0
 Upstream-Contact: https://source.android.com/compatibility/contact-us.html
 Source: https://android.googlesource.com/platform/system/core
         https://android.googlesource.com/platform/system/extra
+        https://android.googlesource.com/platform/libnativehelper
+        https://android.googlesource.com/platform/build
 
 Files: *
-Copyright: 2005-2012, The Android Open Source Project
+Copyright: 2005-2014, The Android Open Source Project
 License: Apache-2.0
+
+Files: core/fastboot/*.c
+       core/fastboot/*.h
+       core/fastbootd/bootimg.h
+       core/include/cutils/atomic-arm64.h
+       core/include/cutils/atomic-x86_64.h
+       core/include/utils/LinearAllocator.h
+       core/libpixelflinger/codeflinger/Arm64Assembler.cpp
+       core/libpixelflinger/codeflinger/Arm64Assembler.h
+       core/libpixelflinger/codeflinger/Arm64Disassembler.cpp
+       core/libpixelflinger/codeflinger/Arm64Disassembler.h
+       core/libpixelflinger/tests/arch-arm64/*
+       core/libpixelflinger/tests/gglmul/*
+       core/libutils/LinearAllocator.cpp
+       core/toolbox/bsd-compatibility.h
+       core/toolbox/pwcache.c
+       extra/f2fs_utils/f2fs_dlutils.c
+       extra/f2fs_utils/f2fs_ioutils.c
+       extra/f2fs_utils/f2fs_utils.c
+       extra/tests/bionic/*.c
+       extra/tests/bionic/*.cpp
+       extra/tests/bionic/*.h
+       extra/tests/sdcard/*.cpp
+       extra/tests/sdcard/*.h
+Copyright: 2008-2014, The Android Open Source Project
+License: BSD-2-clause
+
+Files: core/include/mincrypt/*
+       core/libmincrypt/*.c
+       core/toolbox/clear.c
+       core/toolbox/iftop.c
+       core/toolbox/log.c
+       core/toolbox/lsof.c
+       core/toolbox/mknod.c
+       core/toolbox/netstat.c
+       core/toolbox/prlimit.c
+       core/toolbox/readlink.c
+       core/toolbox/renice.c
+       core/toolbox/route.c
+       core/toolbox/top.c
+       core/toolbox/uptime.c
+       core/toolbox/vmstat.c
+       extra/cpustats/cpustats.c
+Copyright: 2008-2014, The Android Open Source Project
+License: BSD-3-clause
+
+Files: core/fastbootd/*
+Copyright: 2009-2013, Google Inc. <google.com>
+License: BSD-3-clause
+
+Files: core/cutils/ashmem.h
+       core/utils/ashmem.h
+       core/include/log/logger.h
+Copyright: 2007-2014, The Android Open Source Project
+License: Apache-2.0 or GPL-2
+
+Files: core/libion/original-kernel-headers/linux/ion.h
+       core/libion/original-kernel-headers/linux/ion_test.h
+Copyright: 2011, Google, Inc. <google.com>
+License: GPL-2
+
+Files: core/libpixelflinger/codeflinger/armreg.h
+Copyright: 1998, 2001, Ben Harris
+           1994-1996, Mark Brinicombe
+           1994, Brini
+License: BSD-4-clause
+
+Files: core/libpixelflinger/codeflinger/disassem.c
+Copyright: 1996, Mark Brinicombe
+           1996, Brini
+License: BSD-4-clause
+
+Files: core/libpixelflinger/codeflinger/disassem.h
+Copyright: 1997, Mark Brinicombe
+           1997, Causality Limited
+License: BSD-4-clause
+
+Files: core/libpixelflinger/codeflinger/mips_disassem.c
+Copyright: 1996, Mark Brinicombe
+           1996, Brini
+License: BSD-3-clause
+
+Files: core/libpixelflinger/codeflinger/mips_disassem.h
+Copyright: 1997, Mark Brinicombe
+           1997, Causality Limited
+License: BSD-3-clause
+
+Files: core/libpixelflinger/codeflinger/mips_opcode.h
+       core/toolbox/upstream-netbsd/*
+Copyright: 1987-1994, The Regents of the University of California
+License: BSD-3-clause
+
+Files: core/toolbox/upstream-netbsd/bin/dd/dd_hostops.c
+       core/toolbox/upstream-netbsd/lib/libc/gen/humanize_number.c
+       core/toolbox/upstream-netbsd/lib/libutil/raise_default_signal.c
+Copyright: 1997-2010, The NetBSD Foundation, Inc.
+License: BSD-2-clause
+
+Files: core/toolbox/upstream-netbsd/usr.bin/grep/*
+Copyright: 1999, James Howard and Dag-Erling Coïdan Smørgrav
+           2008-2010, Gabor Kovesdan <gabor@FreeBSD.org>
+License: BSD-2-clause
+
+Files: core/toolbox/upstream-netbsd/usr.bin/grep/file.c
+Copyright: 1999, James Howard and Dag-Erling Coïdan Smørgrav
+           2008-2010, Gabor Kovesdan <gabor@FreeBSD.org>
+           2010, Dimitry Andric <dimitry@andric.com>
+License: BSD-2-clause
+
+Files: core/toolbox/upstream-netbsd/usr.bin/grep/queue.c
+Copyright: 1999, James Howard and Dag-Erling Coïdan Smørgrav
+License: BSD-2-clause
+
+Files: core/libsparse/sparse_crc32.c
+       extra/ext4_utils/crc16.c
+Copyright: 1986, Gary S. Brow
+License: UNKNOWN
+
+Files: core/toolbox/newfs_msdos.c
+Copyright: 1998, Robert Nordier
+License: BSD-2-clause
 
 Files: debian/*
 Copyright: 2012, Stefan Handschuh <handschuh.stefan@googlemail.com>
            2015, Kai-Chung Yan <seamlikok@gmail.com>
 License: GPL-2+
-
-Files: fastboot/*
-Copyright: 2008, The Android Open Source Project
-License: BSD-2-clause
-
-Files: libpixelflinger/codeflinger/armreg.h
-       libpixelflinger/codeflinger/disassem.c
-       libpixelflinger/codeflinger/disassem.h
-Copyright: 1998, 2001, Ben Harris
-           1997, Causality Limited
-           1994-1997, Mark Brinicombe
-           1994, 1996, Brini
-License: BSD-2-clause
-
-Files: sh/arith.c
-Copyright: 1984, 1989, 1990, 2000, 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
-License: GPL-2+-with-Bison-Exception
-
-Files: sh/arith.c
-Copyright: 1993, The Regents of the University of California.
-License: BSD-3-clause
-
-Files: sh/*
-Copyright: 1991, 1993, The Regents of the University of California.
-License: BSD-3-clause
-
-Files: libcutils/memory.c
-Copyright: 1998, Todd C. Miller <Todd.Miller@courtesan.com>
-License: ISC
-
 
 License: Apache-2.0
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -55,7 +148,7 @@ License: Apache-2.0
  On Debian systems, the full text of the Apache License, Version 2.0
  can be found in the file `/usr/share/common-licenses/Apache-2.0'.
 
-License: GPL-2+
+License: GPL-2
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -73,7 +166,7 @@ License: GPL-2+
  On Debian systems, the full text of the GNU General Public License
  version 2 can be found in the file `/usr/share/common-licenses/GPL-2'.
 
-License: GPL-2+-with-Bison-Exception
+License: GPL-2-with-Bison-Exception
  As a special exception, when this file is copied by Bison into a Bison output
  file, you may use that output file without restriction.  This special
  exception was added by the Free Software Foundation in version 1.24 of Bison.
@@ -104,16 +197,3 @@ License: BSD-3-clause
  3. Neither the name of the University nor the names of its contributors
     may be used to endorse or promote products derived from this software
     without specific prior written permission.
-
-License: ISC
- Permission to use, copy, modify, and distribute this software for any
- purpose with or without fee is hereby granted, provided that the above
- copyright notice and this permission notice appear in all copies.
- .
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
- WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
- MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
- ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
- WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
- ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
- OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
