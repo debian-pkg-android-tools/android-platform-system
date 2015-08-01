@@ -14,23 +14,22 @@ SOURCES = make_ext4fs.c \
           crc16.c \
           ext4_sb.c
 OBJECTS = $(SOURCES:.c=.o)
-INCLUDES = $(ANDROID_INCLUDES) \
-           -I../../core/include \
-           -I../../core/libsparse/include \
-           -I/usr/include/android
-LOCAL_CFLAGS = -fPIC -c
-LOCAL_LDFLAGS = -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android \
-                -Wl,-soname,$(NAME).so.5 \
-                -lpthread -lz \
-                -L../../core/libsparse -lsparse \
-                -L/usr/lib/android -lselinux
+CFLAGS += -fPIC -c
+CPPFLAGS += $(ANDROID_INCLUDES) \
+            -I../../core/include \
+            -I../../core/libsparse/include \
+            -I/usr/include/android
+LDFLAGS += -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android \
+           -Wl,-soname,$(NAME).so.5 -lz \
+           -L../../core/libsparse -lsparse \
+           -L/usr/lib/android -lselinux
 
 build: $(OBJECTS)
-	cc $^ -o $(NAME).so $(LDFLAGS) $(LOCAL_LDFLAGS)
+	cc $^ -o $(NAME).so $(LDFLAGS)
 	ar rs $(NAME).a $^
 
 clean:
 	rm -f *.so *.a *.o
 
 $(OBJECTS): %.o: %.c
-	cc $< -o $@ $(CFLAGS) $(CPPFLAGS) $(INCLUDES) $(LOCAL_CFLAGS)
+	cc $< -o $@ $(CFLAGS) $(CPPFLAGS)

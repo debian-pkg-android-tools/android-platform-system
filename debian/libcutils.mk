@@ -28,19 +28,17 @@ SOURCES = hashmap.c \
           ashmem-host.c \
           dlmalloc_stubs.c
 OBJECTS = $(SOURCES:.c=.o)
-INCLUDES = $(ANDROID_INCLUDES) -I../include
-LOCAL_CFLAGS = -DANDROID_SMP=0 -fPIC -c
-LOCAL_LDFLAGS = -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android \
-                -Wl,-soname,$(NAME).so.5 \
-                -lpthread -lbsd \
-                -L../liblog -llog
+CFLAGS += -fPIC -c -DANDROID_SMP=0
+CPPFLAGS += $(ANDROID_INCLUDES) -I../include
+LDFLAGS += -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android \
+           -Wl,-soname,$(NAME).so.5 -lbsd -L../liblog -llog
 
 build: $(OBJECTS)
-	cc $^ -o $(NAME).so $(LDFLAGS) $(LOCAL_LDFLAGS)
+	cc $^ -o $(NAME).so $(LDFLAGS)
 	ar rs $(NAME).a $^
 
 clean:
 	rm -f *.so *.a *.o
 
 $(OBJECTS): %.o: %.c
-	cc $< -o $@ $(CFLAGS) $(CPPFLAGS) $(INCLUDES) $(LOCAL_CFLAGS)
+	cc $< -o $@ $(CFLAGS) $(CPPFLAGS)
