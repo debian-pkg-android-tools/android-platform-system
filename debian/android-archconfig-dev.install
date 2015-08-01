@@ -1,0 +1,2 @@
+core/include/arch          usr/include/android
+debian/android_includes.mk usr/include/android/arch
