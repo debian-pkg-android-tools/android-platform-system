@@ -1,2 +1,2 @@
-core/include/log/ usr/include/android/
-core/liblog/*.a   usr/lib/android/
+core/include/log usr/include/android
+core/liblog/*.a  usr/lib/android

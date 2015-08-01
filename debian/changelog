@@ -8,7 +8,7 @@ android-platform-system (1:5.1.1+r8-1) UNRELEASED; urgency=low
   * New binary packages:
       - adb
       - android-archconfig-dev
-      - android-f2fs-utils(-dev)
+      - android-libf2fs-utils(-dev)
       - android-libext4-utils(-dev)
       - android-libnativehelper(-dev)
       - android-libsparse(-dev)
@@ -16,7 +16,7 @@ android-platform-system (1:5.1.1+r8-1) UNRELEASED; urgency=low
       - android-libziparchive(-dev)
       - fastboot
   * Add myself as uploaders
-  * New f2fs_fmt_location.diff: Makes f2fs_dlutils.so dlopen the correct library
+  * New libf2fs_utils_skip_dlopen.diff: Use linked library directly
   * d/control:
     - Add Build-Depends: uuid-dev
     - Add (Build-)Depends: android-libf2fs-fmt(-dev)
