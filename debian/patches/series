@@ -1,2 +1,2 @@
 libandroidcutils_makefile_pkgconfig
-f2fs_fmt_location.diff
+libf2fs_utils_skip_dlopen.diff
