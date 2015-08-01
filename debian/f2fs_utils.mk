@@ -14,9 +14,9 @@ LOCAL_LDFLAGS = -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android -lpthread
 
 build: $(OBJECTS)
 	cc f2fs_ioutils.o -o libf2fs_ioutils.so \
-     -Wl,-soname,libf2fs_ioutils.so.5 $(LDFLAGS) $(LOCAL_LDFLAGS) \
+	   -Wl,-soname,libf2fs_ioutils.so.5 $(LDFLAGS) $(LOCAL_LDFLAGS) \
 	   -L../../core/libsparse -lsparse \
-	   -L/usr/lib/android -lext2_uuid -lz
+	   -L/usr/lib/android -luuid -lz
 	ar rs libf2fs_ioutils.a f2fs_ioutils.o
 
 	cc f2fs_dlutils.o -o libf2fs_dlutils.so \
