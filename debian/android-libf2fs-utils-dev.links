@@ -1,0 +1,3 @@
+#!/usr/bin/dh-exec
+
+usr/lib/libf2fs_utils.so.${UPSTREAM_UNIFIED_VERSION}   usr/lib/libf2fs_utils.so

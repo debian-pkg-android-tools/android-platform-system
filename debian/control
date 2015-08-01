@@ -112,7 +112,7 @@ Description: Android fastboot tool
  A command line tool for flashing an Android device, boot an Android device to
  fastboot mode, etc..
 
-Package: android-f2fs-utils
+Package: android-libf2fs-utils
 Section:libs
 Architecture: linux-any
 Depends: android-libsparse (>= ${binary:Version}),
@@ -125,7 +125,7 @@ Depends: android-libsparse (>= ${binary:Version}),
 Description: Android F2FS utils library
  This library is only used by Android SDK currently.
 
-Package: android-f2fs-utils-dev
+Package: android-libf2fs-utils-dev
 Section: libdevel
 Architecture: linux-any
 Depends: android-f2fs-utils (= ${binary:Version}),
