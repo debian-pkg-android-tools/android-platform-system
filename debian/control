@@ -5,28 +5,19 @@ Maintainer: Android tools Maintainer <android-tools-devel@lists.alioth.debian.or
 Uploaders: Stefan Handschuh <handschuh.stefan@googlemail.com>,
            Hans-Christoph Steiner <hans@eds.org>,
            Kai-Chung Yan <seamlikok@gmail.com>
-Build-Depends: android-libext2-uuid-dev,
-               android-libf2fs-fmt-dev,
-               android-libselinux-dev,
+Build-Depends: android-libselinux-dev,
                debhelper (>=9),
                dh-exec,
                libbsd-dev,
+               libf2fs-dev,
+               libf2fs-format-dev,
                libssl-dev,
+               uuid-dev,
                zlib1g-dev
 Standards-Version: 3.9.6
 Homepage: https://android.googlesource.com/platform/system/core
 Vcs-Git: http://anonscm.debian.org/android-tools/android-platform-system-core.git
 Vcs-Browser: http://anonscm.debian.org/cgit/android-tools/android-platform-system-core.git
-
-Package: android-system-dev
-Section: libdevel
-Architecture: linux-any
-Depends: ${misc:Depends},
-         android-libcutils-dev (= ${binary:Version}),
-Description: Android system development headers
- Headers that define various macros and data structures for the Android code.
- .
- This package contains the development files.
 
 Package: android-liblog
 Section: libs
@@ -124,9 +115,10 @@ Description: Android fastboot tool
 Package: android-f2fs-utils
 Section:libs
 Architecture: linux-any
-Depends: android-libext2-uuid,
-         android-libf2fs-fmt,
-         android-libsparse (>= ${binary:Version}),
+Depends: android-libsparse (>= ${binary:Version}),
+         libf2fs-format1,
+         libf2fs1,
+         libuuid1,
          zlib1g,
          ${misc:Depends},
          ${shlibs:Depends}
