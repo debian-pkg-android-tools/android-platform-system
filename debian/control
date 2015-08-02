@@ -123,6 +123,10 @@ Depends: android-libsparse (>= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Description: Android F2FS utils library
+ This package contains only libf2fs_utils.so which is composed of
+ libf2fs_ioutils.so and libf2fs_dlutils.so. This library invokes functions of
+ f2fs-tools libraries directly instead of using dlopen.
+ .
  This library is only used by Android SDK currently.
 
 Package: android-libf2fs-utils-dev
@@ -131,6 +135,10 @@ Architecture: linux-any
 Depends: android-f2fs-utils (= ${binary:Version}),
          ${misc:Depends}
 Description: Android F2FS utils library
+ This package contains only libf2fs_utils.so which is composed of
+ libf2fs_ioutils.so and libf2fs_dlutils.so. This library invokes functions of
+ f2fs-tools libraries directly instead of using dlopen.
+ .
  This library is only used by Android SDK currently.
  .
  This package contains the development files.
@@ -141,7 +149,7 @@ Architecture: linux-any
 Depends: zlib1g,
          ${misc:Depends},
          ${shlibs:Depends}
-Description: Android sparse library
+Description: Android Sparse library
  This library is only used by Android SDK currently.
 
 Package: android-libsparse-dev
@@ -149,7 +157,7 @@ Section: libdevel
 Architecture: linux-any
 Depends: android-libsparse (= ${binary:Version}),
          ${misc:Depends}
-Description: Android sparse library - Development files
+Description: Android Sparse library - Development files
  This library is only used by Android SDK currently.
  .
  This package contains the development files.
@@ -162,7 +170,7 @@ Depends: android-libsparse (>= ${binary:Version}),
          zlib1g,
          ${misc:Depends},
          ${shlibs:Depends}
-Description: Android ext4 library
+Description: Android ext4 utils library
  This library is only used by Android SDK currently.
 
 Package: android-libext4-utils-dev
@@ -170,7 +178,7 @@ Section: libdevel
 Architecture: linux-any
 Depends: android-libext4-utils (= ${binary:Version}),
          ${misc:Depends}
-Description: Android ext4 library - Development files
+Description: Android ext4 utils library - Development files
  This library is only used by Android SDK currently.
  .
  This package contains the development files.
