@@ -9,7 +9,7 @@ LDFLAGS += -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android \
            -Wl,-soname,$(NAME).so.5 -ldl -L../core/liblog -llog
 
 build: $(OBJECTS)
-	cc $^ -o $(NAME).so $(LDFLAGS)
+	c++ $^ -o $(NAME).so $(LDFLAGS)
 	ar rs $(NAME).a $^
 
 clean:

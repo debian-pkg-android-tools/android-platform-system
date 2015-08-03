@@ -37,7 +37,7 @@ LDFLAGS += -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android \
            -L../libcutils -lcutils
 
 build: $(OBJECTS)
-	cc $^ -o $(NAME).so $(LDFLAGS)
+	c++ $^ -o $(NAME).so $(LDFLAGS)
 	ar rs $(NAME).a $^
 
 clean:
