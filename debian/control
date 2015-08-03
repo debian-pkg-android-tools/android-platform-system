@@ -42,7 +42,7 @@ Description: Android logging library - Development files
 Package: android-libcutils
 Section: libs
 Architecture: linux-any
-Depends: ${misc:Depends}, ${shlibs:Depends}, android-liblog
+Depends: android-liblog, libbsd0, ${shlibs:Depends}, ${misc:Depends}
 Description: Android utils library for C
  This library provides common functionalities for android related tools.
 
@@ -104,8 +104,8 @@ Depends: android-libext4-utils (>= ${binary:Version}),
          android-libsparse (>= ${binary:Version}),
          android-libzipfile (>= ${binary:Version}),
          zlib1g,
+         ${shlibs:Depends},
          ${misc:Depends},
-         ${shlibs:Depends}
 Breaks: android-tools-fastboot
 Replaces: android-tools-fastboot
 Description: Android fastboot tool
@@ -132,7 +132,7 @@ Description: Android F2FS utils library
 Package: android-libf2fs-utils-dev
 Section: libdevel
 Architecture: linux-any
-Depends: android-f2fs-utils (= ${binary:Version}),
+Depends: android-libf2fs-utils (= ${binary:Version}),
          ${misc:Depends}
 Description: Android F2FS utils library
  This package contains only libf2fs_utils.so which is composed of
@@ -186,7 +186,8 @@ Description: Android ext4 utils library - Development files
 Package: android-libutils
 Section: libs
 Architecture: linux-any
-Depends: android-liblog (>= ${binary:Version}),
+Depends: android-libcutils (>= ${binary:Version}),
+         android-liblog (>= ${binary:Version}),
          android-libnativehelper,
          ${shlibs:Depends},
          ${misc:Depends}
@@ -206,7 +207,8 @@ Description: Android Utility Function Library - Development files
 Package: android-libziparchive
 Section: libs
 Architecture: linux-any
-Depends: android-libutils (>= ${binary:Version}),
+Depends: android-liblog (>= ${binary:Version}),
+         android-libutils (>= ${binary:Version}),
          ${shlibs:Depends},
          ${misc:Depends}
 Description: Android zip archive library
@@ -240,3 +242,11 @@ Description: Android native helper library - Development files
  This library is only used by Android SDK currently.
  .
  This package contains the development files.
+
+Package: android-archconfig-dev
+Section: libs
+Architecture: all
+Depends: ${misc:Depends}
+Description: Android config headers for all Android codes
+ This package contains AndroidConfig.h for x86, misp(64) and arm(64) which must
+ be included in all source files of Android SDK componnets.
