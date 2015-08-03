@@ -31,7 +31,7 @@ OBJECTS = $(SOURCES:.c=.o)
 CFLAGS += -fPIC -c -DANDROID_SMP=0
 CPPFLAGS += $(ANDROID_INCLUDES) -I../include
 LDFLAGS += -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android \
-           -Wl,-soname,$(NAME).so.5 -lbsd -L../liblog -llog
+           -Wl,-soname,$(NAME).so.5 -lpthread -lbsd -L../liblog -llog
 
 build: $(OBJECTS)
 	cc $^ -o $(NAME).so $(LDFLAGS)
