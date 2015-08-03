@@ -31,9 +31,10 @@ OBJECTS = $(SOURCES:.cpp=.o)
 CXXFLAGS += -fPIC -c -DLIBUTILS_NATIVE=1
 CPPFLAGS += $(ANDROID_INCLUDES) -I../include -I../../libnativehelper/include/nativehelper
 LDFLAGS += -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android \
-           -Wl,-soname,$(NAME).so.5 -lrt -ldl \
+           -Wl,-soname,$(NAME).so.5 -lrt -ldl -lpthread \
            -L../liblog -llog \
-           -L../../libnativehelper -lnativehelper
+           -L../../libnativehelper -lnativehelper \
+           -L../libcutils -lcutils
 
 build: $(OBJECTS)
 	cc $^ -o $(NAME).so $(LDFLAGS)
