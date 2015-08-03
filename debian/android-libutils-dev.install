@@ -1,2 +1,2 @@
-core/libutils/*.a    usr/lib/android
-core/include/utils/* usr/include/android
+core/libutils/*.a  usr/lib/android
+core/include/utils usr/include/android

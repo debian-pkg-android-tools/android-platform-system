@@ -100,7 +100,7 @@ Package: fastboot
 Section: utils
 Architecture: linux-any
 Depends: android-libext4-utils (>= ${binary:Version}),
-         android-f2fs-utils (>= ${binary:Version}),
+         android-libf2fs-utils (>= ${binary:Version}),
          android-libsparse (>= ${binary:Version}),
          android-libzipfile (>= ${binary:Version}),
          zlib1g,
