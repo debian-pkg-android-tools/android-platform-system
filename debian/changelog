@@ -22,7 +22,6 @@ android-platform-system (1:5.1.1+r8-1) UNRELEASED; urgency=low
     - Add (Build-)Depends: android-libf2fs-fmt(-dev)
     - Add (Build-)Depends: android-libselinux(-dev)
   * Use dh-exec to rename .so files before installing them
-  * Remove binary package android-system-dev: Not needed.
   * Homepage change to android.googlesource.com: Upstream composed of multiple
     repositories.
 
