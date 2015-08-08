@@ -7,7 +7,6 @@ Uploaders: Stefan Handschuh <handschuh.stefan@googlemail.com>,
            Kai-Chung Yan <seamlikok@gmail.com>
 Build-Depends: android-libselinux-dev,
                debhelper (>=9),
-               dh-exec,
                libbsd-dev,
                libf2fs-dev,
                libf2fs-format-dev,
@@ -112,7 +111,7 @@ Description: Android fastboot tool
  fastboot mode, etc..
 
 Package: android-libf2fs-utils
-Section:libs
+Section: libs
 Architecture: linux-any
 Depends: android-libsparse (>= ${binary:Version}),
          libf2fs-format1,

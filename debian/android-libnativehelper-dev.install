@@ -1,2 +1,3 @@
 libnativehelper/*.a       usr/lib/android
+libnativehelper/*.so      usr/lib/android
 libnativehelper/include/* usr/include/android

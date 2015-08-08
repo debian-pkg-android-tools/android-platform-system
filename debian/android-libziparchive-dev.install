@@ -1,2 +1,3 @@
-core/libziparchive/*.a  usr/lib/android
 core/include/ziparchive usr/include/android
+core/libziparchive/*.a  usr/lib/android
+core/libziparchive/*.so usr/lib/android

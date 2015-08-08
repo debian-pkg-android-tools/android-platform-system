@@ -1,3 +1,1 @@
-#!/usr/bin/dh-exec
-
-core/libutils/libutils.so => usr/lib/android/libutils.so.${UPSTREAM_UNIFIED_VERSION}
+core/libutils/libutils.so.*   usr/lib/android

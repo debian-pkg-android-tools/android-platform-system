@@ -1,1 +1,2 @@
 extra/f2fs_utils/*.a   usr/lib/android
+extra/f2fs_utils/*.so  usr/lib/android

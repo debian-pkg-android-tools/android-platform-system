@@ -1,3 +1,0 @@
-#!/usr/bin/dh-exec
-
-usr/lib/android/libext4_utils.so.${UPSTREAM_UNIFIED_VERSION}   usr/lib/android/libext4_utils.so

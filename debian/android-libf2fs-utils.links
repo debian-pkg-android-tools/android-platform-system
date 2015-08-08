@@ -1,3 +1,0 @@
-#!/usr/bin/dh-exec
-
-usr/lib/android/libf2fs_utils.so.${UPSTREAM_UNIFIED_VERSION}   usr/lib/android/libf2fs_utils.so.5

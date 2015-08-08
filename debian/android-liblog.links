@@ -1,3 +1,0 @@
-#!/usr/bin/dh-exec
-
-usr/lib/android/liblog.so.${UPSTREAM_UNIFIED_VERSION}   usr/lib/android/liblog.so.5

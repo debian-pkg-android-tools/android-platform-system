@@ -16,11 +16,13 @@ LDFLAGS += -fPIC -shared -Wl,-soname,libf2fs_utils.so.5 \
            -L../../core/libsparse -lsparse
 
 build: $(OBJECTS)
-	cc $^ -o libf2fs_utils.so $(LDFLAGS)
+	cc $^ -o $(NAME).so.${UPSTREAM_LIBVERSION} $(LDFLAGS)
 	ar rs $(NAME).a $^
+	ln -s $(NAME).so.${UPSTREAM_LIBVERSION} $(NAME).so
+	ln -s $(NAME).so.${UPSTREAM_LIBVERSION} $(NAME).so.5
 
 clean:
-	rm -f *.so *.a *.o
+	rm -f *.so* *.a *.o
 
 $(OBJECTS): %.o: %.c
 	cc $< -o $@ $(CFLAGS) $(CPPFLAGS)

@@ -1,2 +1,3 @@
-core/libsparse/include/* usr/include/android
 core/libsparse/*.a       usr/lib/android
+core/libsparse/*.so      usr/lib/android
+core/libsparse/include/* usr/include/android
