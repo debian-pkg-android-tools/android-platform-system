@@ -211,6 +211,7 @@ Section: libs
 Architecture: linux-any
 Depends: android-liblog (>= ${binary:Version}),
          android-libutils (>= ${binary:Version}),
+         zlib1g,
          ${shlibs:Depends},
          ${misc:Depends}
 Description: Android zip archive library

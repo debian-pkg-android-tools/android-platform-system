@@ -5,7 +5,7 @@ SOURCES = zip_archive.cc
 OBJECTS = $(SOURCES:.cc=.o)
 CXXFLAGS += -fPIC -c -mno-ms-bitfields
 CPPFLAGS += $(ANDROID_INCLUDES) -I../include -I../../libnativehelper/include/nativehelper
-LDFLAGS += -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android \
+LDFLAGS += -fPIC -shared -Wl,-rpath=/usr/lib/android -lz \
            -Wl,-soname,$(NAME).so.5 -lz -L../libutils -lutils -L../liblog -llog
 
 build: $(OBJECTS)
