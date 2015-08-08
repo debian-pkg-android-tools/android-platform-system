@@ -166,11 +166,6 @@ License: GPL-2
  On Debian systems, the full text of the GNU General Public License
  version 2 can be found in the file `/usr/share/common-licenses/GPL-2'.
 
-License: GPL-2-with-Bison-Exception
- As a special exception, when this file is copied by Bison into a Bison output
- file, you may use that output file without restriction.  This special
- exception was added by the Free Software Foundation in version 1.24 of Bison.
-
 License: BSD-2-clause
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions
