@@ -82,7 +82,6 @@ Description: Android zipfile library - Development files
  This package contains the development files.
 
 Package: adb
-Section: utils
 Architecture: linux-any
 Depends: android-libcutils (>= ${binary:Version}),
          android-liblog (>= ${binary:Version}),
@@ -98,7 +97,6 @@ Description: Android Debug Bridge
  instance or connected Android-powered device.
 
 Package: fastboot
-Section: utils
 Architecture: linux-any
 Depends: android-libext4-utils (>= ${binary:Version}),
          android-libf2fs-utils (>= ${binary:Version}),
