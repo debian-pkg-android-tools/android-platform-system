@@ -58,8 +58,8 @@ Files: core/fastbootd/*
 Copyright: 2009-2013, Google Inc. <google.com>
 License: BSD-3-clause
 
-Files: core/cutils/ashmem.h
-       core/utils/ashmem.h
+Files: core/include/cutils/ashmem.h
+       core/include/utils/ashmem.h
        core/include/log/logger.h
 Copyright: 2007-2014, The Android Open Source Project
 License: Apache-2.0 or GPL-2
