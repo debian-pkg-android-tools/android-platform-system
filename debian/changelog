@@ -8,6 +8,7 @@ android-platform-system (1:5.1.1+r8-1) UNRELEASED; urgency=low
   * New binary packages:
       - adb
       - android-archconfig-dev
+      - android-libbacktrace(-dev)
       - android-libext4-utils(-dev)
       - android-libf2fs-utils(-dev)
       - android-libnativehelper(-dev)

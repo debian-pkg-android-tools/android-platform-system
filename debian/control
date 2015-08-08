@@ -12,6 +12,7 @@ Build-Depends: android-libselinux-dev,
                libf2fs-dev,
                libf2fs-format-dev,
                libssl-dev,
+               android-libunwind-dev,
                uuid-dev,
                zlib1g-dev
 Standards-Version: 3.9.6
@@ -186,9 +187,10 @@ Description: Android ext4 utils library - Development files
 Package: android-libutils
 Section: libs
 Architecture: linux-any
-Depends: android-libcutils (>= ${binary:Version}),
+Depends: android-libbacktrace (>= ${binary:Version}),
+         android-libcutils (>= ${binary:Version}),
          android-liblog (>= ${binary:Version}),
-         android-libnativehelper,
+         android-libnativehelper (>= ${binary:Version}),
          ${shlibs:Depends},
          ${misc:Depends}
 Description: Android Utility Function Library
@@ -198,8 +200,9 @@ Package: android-libutils-dev
 Section: libdevel
 Architecture: linux-any
 Depends: android-libcutils-dev (>= ${binary:Version}),
+         android-libnativehelper-dev (>= ${binary:Version}),
+         android-system-dev (>= ${source:Version}),
          android-libutils (= ${binary:Version}),
-         android-system-dev (>= ${binary:Version}),
          ${misc:Depends}
 Description: Android Utility Function Library - Development files
  This library is only used by Android SDK currently.
@@ -259,3 +262,25 @@ Architecture: all
 Depends: ${misc:Depends}
 Description: Android system headers
  This package contains header files in core/inlcude/system.
+
+Package: android-libbacktrace
+Section: libs
+Architecture: linux-any
+Depends: android-libcutils (>= ${binary:Version}),
+         android-liblog (>= ${binary:Version}),
+         android-libunwind,
+         ${shlibs:Depends},
+         ${misc:Depends}
+Description: Android backtrace library
+ This library is only used by Android SDK currently.
+
+Package: android-libbacktrace-dev
+Section: libdevel
+Architecture: linux-any
+Depends: android-libunwind-dev,
+         android-libbacktrace (= ${binary:Version}),
+         ${misc:Depends}
+Description: Android backtrace library - Development files
+ This library is only used by Android SDK currently.
+ .
+ This package contains the development files.

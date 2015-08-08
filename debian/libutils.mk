@@ -34,7 +34,8 @@ LDFLAGS += -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android \
            -Wl,-soname,$(NAME).so.5 -lrt -ldl -lpthread \
            -L../liblog -llog \
            -L../../libnativehelper -lnativehelper \
-           -L../libcutils -lcutils
+           -L../libcutils -lcutils \
+           -L../libbacktrace -lbacktrace
 
 build: $(OBJECTS)
 	c++ $^ -o $(NAME).so $(LDFLAGS)

@@ -1,0 +1,3 @@
+core/include/backtrace usr/include/android
+core/libbacktrace/*.a  usr/lib/android
+core/libbacktrace/*.so usr/lib/android
