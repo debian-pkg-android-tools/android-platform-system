@@ -20,8 +20,9 @@ android-platform-system (1:5.1.1+r8-1) UNRELEASED; urgency=low
   * New libf2fs_utils_skip_dlopen.diff: Use linked library directly
   * d/control:
     - Add Build-Depends: uuid-dev
-    - Add (Build-)Depends: android-libf2fs-fmt(-dev)
+    - Add (Build-)Depends: android-libf2fs(-format)(-dev)
     - Add (Build-)Depends: android-libselinux(-dev)
+    - Change architecture to x86, ARM and MIPS (Linux only)
   * Use dh-exec to rename .so files before installing them
   * Homepage change to android.googlesource.com: Upstream composed of multiple
     repositories.
