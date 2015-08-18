@@ -1,6 +1,8 @@
 #!/usr/bin/make -f
 
 export UPSTREAM_LIBVERSION = 5.1.1.8
+UPSTREAM_VERSION = 5.1.1+r8
+UPSTREAM_TAG = android-5.1.1_r8
 
 %:
 	dh $@
@@ -11,3 +13,30 @@ override_dh_auto_build:
 override_dh_auto_clean:
 	dh_auto_clean
 	make clean -f debian/Makefile
+
+get-orig-source: core.tar.gz extra.tar.gz build.tar.gz libnativehelper.tar.gz
+	mkdir -p android-platform-system-$(UPSTREAM_VERSION)/core
+	mkdir android-platform-system-$(UPSTREAM_VERSION)/extra
+	mkdir android-platform-system-$(UPSTREAM_VERSION)/libnativehelper
+	mkdir android-platform-system-$(UPSTREAM_VERSION)/build
+	tar -f core.tar.gz -z -x --directory android-platform-system-$(UPSTREAM_VERSION)/core
+	tar -f extra.tar.gz -z -x --directory android-platform-system-$(UPSTREAM_VERSION)/extra
+	tar -f libnativehelper.tar.gz -z -x --directory android-platform-system-$(UPSTREAM_VERSION)/libnativehelper
+	tar -f build.tar.gz -z -x --directory android-platform-system-$(UPSTREAM_VERSION)/build
+	cp -r android-platform-system-$(UPSTREAM_VERSION)/build/core/combo/include/arch android-platform-system-$(UPSTREAM_VERSION)/core/include
+	rm -r android-platform-system-$(UPSTREAM_VERSION)/build
+	tar --create --xz -f android-platform-system_$(UPSTREAM_VERSION).orig.tar.xz android-platform-system-$(UPSTREAM_VERSION)
+	mv android-platform-system_$(UPSTREAM_VERSION).orig.tar.xz ..
+	rm -r $^ android-platform-system-$(UPSTREAM_VERSION)
+
+core.tar.gz:
+	wget https://android.googlesource.com/platform/system/core/+archive/$(UPSTREAM_TAG).tar.gz -O $@
+
+extra.tar.gz:
+	wget https://android.googlesource.com/platform/system/extra/+archive/$(UPSTREAM_TAG).tar.gz -O $@
+
+build.tar.gz:
+	wget https://android.googlesource.com/platform/build/+archive/$(UPSTREAM_TAG).tar.gz -O $@
+
+libnativehelper.tar.gz:
+	wget https://android.googlesource.com/platform/libnativehelper/+archive/$(UPSTREAM_TAG).tar.gz -O $@
