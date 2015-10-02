@@ -23,9 +23,10 @@ android-platform-system (1:5.1.1+r8-1) UNRELEASED; urgency=low
     - Add (Build-)Depends: android-libf2fs(-format)(-dev)
     - Add (Build-)Depends: android-libselinux(-dev)
     - Change architecture to x86, ARM and MIPS (Linux only)
+    - Fix Vcs-Git typo
+    - Homepage change to android.googlesource.com: Upstream composed of multiple
+      repositories.
   * Use dh-exec to rename .so files before installing them
-  * Homepage change to android.googlesource.com: Upstream composed of multiple
-    repositories.
 
  -- Kai-Chung Yan <seamlikok@gmail.com>  Fri, 24 Jul 2015 01:25:36 +0800
 

@@ -16,7 +16,7 @@ Build-Depends: android-libselinux-dev,
                zlib1g-dev
 Standards-Version: 3.9.6
 Homepage: https://android.googlesource.com
-Vcs-Git: http://anonscm.debian.org/android-tools/android-platform-system-core.git
+Vcs-Git: https://anonscm.debian.org/git/android-tools/android-platform-system.git
 Vcs-Browser: http://anonscm.debian.org/cgit/android-tools/android-platform-system-core.git
 
 Package: android-liblog
