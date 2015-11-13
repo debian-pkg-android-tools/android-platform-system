@@ -19,7 +19,7 @@
 
 #include <sys/types.h>
 
-#include <utils/List.h>
+#include <list>
 
 #include <LogBufferElement.h>
 
@@ -47,7 +47,7 @@ public:
     void format(char **strp);
 };
 
-typedef android::List<Prune *> PruneCollection;
+typedef std::list<Prune> PruneCollection;
 
 class PruneList {
     PruneCollection mNaughty;
@@ -61,7 +61,9 @@ public:
     int init(char *str);
 
     bool naughty(LogBufferElement *element);
+    bool naughty(void) { return !mNaughty.empty(); }
     bool nice(LogBufferElement *element);
+    bool nice(void) { return !mNice.empty(); }
     bool worstUidEnabled() const { return mWorstUidEnabled; }
 
     // *strp is malloc'd, use free to release

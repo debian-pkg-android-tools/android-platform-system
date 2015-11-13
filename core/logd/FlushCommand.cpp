@@ -27,14 +27,14 @@ FlushCommand::FlushCommand(LogReader &reader,
                            unsigned long tail,
                            unsigned int logMask,
                            pid_t pid,
-                           log_time start)
-        : mReader(reader)
-        , mNonBlock(nonBlock)
-        , mTail(tail)
-        , mLogMask(logMask)
-        , mPid(pid)
-        , mStart(start)
-{ }
+                           uint64_t start) :
+        mReader(reader),
+        mNonBlock(nonBlock),
+        mTail(tail),
+        mLogMask(logMask),
+        mPid(pid),
+        mStart(start) {
+}
 
 // runSocketCommand is called once for every open client on the
 // log reader socket. Here we manage and associated the reader
@@ -72,7 +72,7 @@ void FlushCommand::runSocketCommand(SocketClient *client) {
             return;
         }
         entry = new LogTimeEntry(mReader, client, mNonBlock, mTail, mLogMask, mPid, mStart);
-        times.push_back(entry);
+        times.push_front(entry);
     }
 
     client->incRef();
