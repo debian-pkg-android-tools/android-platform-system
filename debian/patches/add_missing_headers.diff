@@ -1,0 +1,65 @@
+Description: Various headers are missing which causes compiler errors.
+Author: Kai-Chung Yan <seamlikok@gmail.com>
+Last-Update: 2015-11-16
+--- a/core/include/cutils/jstring.h
++++ b/core/include/cutils/jstring.h
+@@ -19,6 +19,7 @@
+ 
+ #include <stdint.h>
+ #include <stddef.h>
++#include <uchar.h>
+ 
+ #ifdef __cplusplus
+ extern "C" {
+--- a/core/include/utils/Unicode.h
++++ b/core/include/utils/Unicode.h
+@@ -19,6 +19,7 @@
+ 
+ #include <sys/types.h>
+ #include <stdint.h>
++#include <uchar.h>
+ 
+ extern "C" {
+ 
+--- a/core/include/utils/String8.h
++++ b/core/include/utils/String8.h
+@@ -24,6 +24,7 @@
+ 
+ #include <string.h> // for strcmp
+ #include <stdarg.h>
++#include <uchar.h>
+ 
+ // ---------------------------------------------------------------------------
+ 
+--- a/core/base/file.cpp
++++ b/core/base/file.cpp
+@@ -22,6 +22,7 @@
+ #include <sys/types.h>
+ 
+ #include <string>
++#include <cstring>
+ 
+ #include "base/macros.h"  // For TEMP_FAILURE_RETRY on Darwin.
+ #define LOG_TAG "base.file"
+--- a/extras/f2fs_utils/f2fs_ioutils.c
++++ b/extras/f2fs_utils/f2fs_ioutils.c
+@@ -39,6 +39,7 @@
+ #include <sys/types.h>
+ #include <fcntl.h>
+ #include <dlfcn.h>
++#include <unistd.h>
+ 
+ #include <assert.h>
+ 
+--- a/extras/f2fs_utils/make_f2fs_main.c
++++ b/extras/f2fs_utils/make_f2fs_main.c
+@@ -19,6 +19,9 @@
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <stdlib.h>
++#include <string.h>
++
++#include "make_f2fs.h"
+ 
+ #if defined(__linux__)
+ #include <linux/fs.h>

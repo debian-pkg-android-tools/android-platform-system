@@ -1,0 +1,3 @@
+core/base/include/* usr/include/android/base
+libbase.a           usr/lib/android
+libbase.so          usr/lib/android

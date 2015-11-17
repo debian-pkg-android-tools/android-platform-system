@@ -1,14 +1,16 @@
 android-platform-system (1:6.0.0+r26-1) UNRELEASED; urgency=low
 
   * New upstream release
-  * Upstream composed of platform/system/core, platform/system/extra and
-    platform/libnativehelper
+  * Upstream composed of platform/system/core, platform/system/extra,
+    platform/build and platform/libnativehelper
   * Change version scheme to follow upstream
   * Makefiles independent from Quilt
   * New binary packages:
       - adb
-      - android-archconfig-dev
+      - android-androidconfig-dev
+      - android-libadb(-dev)
       - android-libbacktrace(-dev)
+      - android-libbase(-dev)
       - android-libext4-utils(-dev)
       - android-libf2fs-utils(-dev)
       - android-libnativehelper(-dev)
@@ -16,19 +18,27 @@ android-platform-system (1:6.0.0+r26-1) UNRELEASED; urgency=low
       - android-libutils(-dev)
       - android-libziparchive(-dev)
       - fastboot
+  * Remove android-libzipfile(-dev): Removed from upstream
   * Add myself as uploaders
-  * New libf2fs_utils_skip_dlopen.diff: Use linked library directly
+  * New patches:
+    - libf2fs_utils_skip_dlopen.diff: Use linked library directly
+    - disable_android_set_abort_message.diff
+    - add_missing_headers.diff: Various headers are missing which causes
+      compiler errors
+    - use_separated_cutils_atomic.diff: cutils/atomic.h uses stdatomic.h which
+      is not supported by C++11
   * d/control:
     - Add Build-Depends: uuid-dev
-    - Add (Build-)Depends: android-libf2fs(-format)(-dev)
+    - Add (Build-)Depends: f2fs-libs(-dev)
     - Add (Build-)Depends: android-libselinux(-dev)
+    - Add (Build-)Depends: android-libunwind(-dev)
     - Change architecture to x86, ARM and MIPS (Linux only)
     - Fix Vcs-Git typo
     - Homepage change to android.googlesource.com: Upstream composed of multiple
       repositories.
-  * Use dh-exec to rename .so files before installing them
+    - Update android-liblog(-dev) package description
 
- -- Kai-Chung Yan <seamlikok@gmail.com>  Fri, 13 Nov 2015 19:20:24 +0800
+ -- Kai-Chung Yan <seamlikok@gmail.com>  Tue, 17 Nov 2015 14:39:17 +0800
 
 android-platform-system-core (21-6) unstable; urgency=low
 

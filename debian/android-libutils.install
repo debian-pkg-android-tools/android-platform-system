@@ -1,1 +1,1 @@
-core/libutils/libutils.so.*   usr/lib/android
+libutils.so.*         usr/lib/android

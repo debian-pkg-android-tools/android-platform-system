@@ -1,2 +1,5 @@
 libandroidcutils_makefile_pkgconfig
 libf2fs_utils_skip_dlopen.diff
+disable_android_set_abort_message.diff
+add_missing_headers.diff
+use_separated_cutils_atomic.diff

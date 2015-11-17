@@ -1,1 +1,1 @@
-usr/bin/adb     /usr/share/android-sdk/platform-tools/adb
+usr/lib/android-sdk/platform-tools/adb   usr/bin/adb

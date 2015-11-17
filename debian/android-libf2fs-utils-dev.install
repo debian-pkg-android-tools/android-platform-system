@@ -1,2 +1,3 @@
-extra/f2fs_utils/*.a   usr/lib/android
-extra/f2fs_utils/*.so  usr/lib/android
+extras/f2fs_utils/make_f2fs.h usr/include/android/f2fs_utils
+libf2fs_utils.a               usr/lib/android
+libf2fs_utils.so              usr/lib/android

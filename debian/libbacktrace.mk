@@ -1,33 +1,36 @@
-include ../../debian/android_includes.mk
-
 NAME = libbacktrace
-SOURCES = BacktraceImpl.cpp \
+SOURCES = Backtrace.cpp \
+          BacktraceCurrent.cpp \
           BacktraceMap.cpp \
-          BacktraceThread.cpp \
+          BacktracePtrace.cpp \
+          thread_utils.c \
+          ThreadEntry.cpp \
           UnwindCurrent.cpp \
           UnwindMap.cpp \
           UnwindPtrace.cpp
-OBJECTS = $(SOURCES:.cpp=.o)
-CFLAGS += -fPIC -c -std=gnu99
-CXXFLAGS += -fPIC -c -std=gnu++11
-CPPFLAGS += $(ANDROID_INCLUDES) -I../include -I/usr/include/android/unwind
-LDFLAGS += -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android \
-           -Wl,-soname,$(NAME).so.5 -lrt -lpthread \
-           -L../liblog -llog \
-           -L../libcutils -lcutils \
-           -L/usr/lib/android -lunwind -lunwind-ptrace
+CSOURCES = $(foreach source, $(filter %.c, $(SOURCES)), core/libbacktrace/$(source))
+CXXSOURCES = $(foreach source, $(filter %.cpp, $(SOURCES)), core/libbacktrace/$(source))
+COBJECTS = $(CSOURCES:.c=.o)
+CXXOBJECTS = $(CXXSOURCES:.cpp=.o)
+CFLAGS += -fPIC -c
+CXXFLAGS += -fPIC -c -std=c++11
+CPPFLAGS += -include core/include/arch/linux-$(CPU)/AndroidConfig.h \
+            -Icore/include -Icore/base/include -I/usr/include/android/unwind
+LDFLAGS += -fPIC -shared  -Wl,-soname,$(NAME).so.$(ANDROID_SOVERSION) \
+           -Wl,-rpath=/usr/lib/android -lrt -lpthread \
+           -L/usr/lib/android -lunwind -L. -lbase -llog -lcutils
 
-build: $(OBJECTS) thread_utils.o
-	c++ $^ -o $(NAME).so.${UPSTREAM_LIBVERSION} $(LDFLAGS)
-	ar rs $(NAME).a $^
-	ln -s $(NAME).so.${UPSTREAM_LIBVERSION} $(NAME).so
-	ln -s $(NAME).so.${UPSTREAM_LIBVERSION} $(NAME).so.5
+build: $(COBJECTS) $(CXXOBJECTS)
+	$(CXX) $^ -o $(NAME).so.$(ANDROID_LIBVERSION) $(LDFLAGS)
+	$(AR) rs $(NAME).a $^
+	ln -s $(NAME).so.$(ANDROID_LIBVERSION) $(NAME).so
+	ln -s $(NAME).so.$(ANDROID_LIBVERSION) $(NAME).so.$(ANDROID_SOVERSION)
 
 clean:
-	rm -f *.so* *.a *.o
+	$(RM) $(COBJECTS) $(CXXOBJECTS)
 
-$(OBJECTS): %.o: %.cpp
-	c++ $< -o $@ $(CXXFLAGS) $(CPPFLAGS)
+$(CXXOBJECTS): %.o: %.cpp
+	$(CXX) $< -o $@ $(CXXFLAGS) $(CPPFLAGS)
 
-thread_utils.o: thread_utils.c
-	cc $^ -o $@ $(CFLAGS) $(CPPFLAGS)
+$(COBJECTS): %.o: %.c
+	$(CC) $< -o $@ $(CFLAGS) $(CPPFLAGS)

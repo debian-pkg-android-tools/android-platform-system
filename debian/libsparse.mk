@@ -1,21 +1,20 @@
-include ../../debian/android_includes.mk
-
 NAME = libsparse
 SOURCES = backed_block.c output_file.c sparse.c sparse_crc32.c sparse_err.c sparse_read.c
+SOURCES := $(foreach source, $(SOURCES), core/libsparse/$(source))
 OBJECTS = $(SOURCES:.c=.o)
 CFLAGS += -fPIC -c
-CPPFLAGS += $(ANDROID_INCLUDES) -I../include -Iinclude
-LDFLAGS += -fPIC -shared -Wl,-rpath=/usr/lib/android \
-           -Wl,-soname,$(NAME).so.5 -lz
+CPPFLAGS += -include core/include/arch/linux-$(CPU)/AndroidConfig.h -Icore/include -Icore/libsparse/include
+LDFLAGS += -fPIC -shared -Wl,-soname,$(NAME).so.$(ANDROID_SOVERSION) \
+           -Wl,-rpath=/usr/lib/android -lz
 
 build: $(OBJECTS)
-	cc $^ -o $(NAME).so.${UPSTREAM_LIBVERSION} $(LDFLAGS)
-	ar rs $(NAME).a $^
-	ln -s $(NAME).so.${UPSTREAM_LIBVERSION} $(NAME).so
-	ln -s $(NAME).so.${UPSTREAM_LIBVERSION} $(NAME).so.5
+	$(CC) $^ -o $(NAME).so.$(ANDROID_LIBVERSION) $(LDFLAGS)
+	$(AR) rs $(NAME).a $^
+	ln -s $(NAME).so.$(ANDROID_LIBVERSION) $(NAME).so
+	ln -s $(NAME).so.$(ANDROID_LIBVERSION) $(NAME).so.$(ANDROID_SOVERSION)
 
 clean:
-	rm -f *.so* *.a *.o
+	$(RM) $(OBJECTS)
 
 $(OBJECTS): %.o: %.c
-	cc $< -o $@ $(CFLAGS) $(CPPFLAGS)
+	$(CC) $< -o $@ $(CFLAGS) $(CPPFLAGS)

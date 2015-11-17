@@ -1,21 +1,20 @@
-include ../../debian/android_includes.mk
-
 NAME = liblog
-SOURCES = event_tag_map.c fake_log_device.c logd_write.c logprint.c uio.c
+SOURCES = fake_log_device.c logd_write_kern.c logprint.c uio.c event_tag_map.c
+SOURCES := $(foreach source, $(SOURCES), core/liblog/$(source))
 OBJECTS = $(SOURCES:.c=.o)
-CFLAGS += -fPIC -c -DFAKE_LOG_DEVICE=1
-CPPFLAGS += $(ANDROID_INCLUDES) -I../include
-LDFLAGS += -fPIC -shared -Wl,-rpath=/usr/lib/android \
-           -Wl,-soname,$(NAME).so.5 -lrt
+CFLAGS += -fPIC -c
+CPPFLAGS += -include core/include/arch/linux-$(CPU)/AndroidConfig.h -Icore/include
+LDFLAGS += -fPIC -shared -Wl,-soname,$(NAME).so.$(ANDROID_SOVERSION) \
+           -Wl,-rpath=/usr/lib/android
 
 build: $(OBJECTS)
-	cc $^ -o $(NAME).so.${UPSTREAM_LIBVERSION} $(LDFLAGS)
-	ar rs $(NAME).a $^
-	ln -s $(NAME).so.${UPSTREAM_LIBVERSION} $(NAME).so
-	ln -s $(NAME).so.${UPSTREAM_LIBVERSION} $(NAME).so.5
+	$(CC) $^ -o $(NAME).so.$(ANDROID_LIBVERSION) $(LDFLAGS)
+	$(AR) rs $(NAME).a $^
+	ln -s $(NAME).so.$(ANDROID_LIBVERSION) $(NAME).so
+	ln -s $(NAME).so.$(ANDROID_LIBVERSION) $(NAME).so.$(ANDROID_SOVERSION)
 
 clean:
-	rm -f *.so* *.a *.o
+	$(RM) $(OBJECTS)
 
 $(OBJECTS): %.o: %.c
-	cc $< -o $@ $(CFLAGS) $(CPPFLAGS)
+	$(CC) $< -o $@ $(CFLAGS) $(CPPFLAGS)

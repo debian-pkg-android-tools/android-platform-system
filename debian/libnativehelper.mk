@@ -1,21 +1,22 @@
-include ../debian/android_includes.mk
-
 NAME = libnativehelper
 SOURCES = JNIHelp.cpp JniConstants.cpp toStringArray.cpp JniInvocation.cpp
+SOURCES := $(foreach source, $(SOURCES), libnativehelper/$(source))
 OBJECTS = $(SOURCES:.cpp=.o)
-CXXFLAGS += -fPIC -c -fvisibility=protected
-CPPFLAGS += $(ANDROID_INCLUDES) -I../core/include -Iinclude/nativehelper
-LDFLAGS += -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android \
-           -Wl,-soname,$(NAME).so.5 -ldl -L../core/liblog -llog
+CXXFLAGS += -fPIC -c
+CPPFLAGS += -include core/include/arch/linux-$(CPU)/AndroidConfig.h \
+            -Icore/include -Ilibnativehelper/include/nativehelper \
+            -I/usr/include/android
+LDFLAGS += -fPIC -shared -Wl,-soname,$(NAME).so.$(ANDROID_SOVERSION) \
+           -Wl,-rpath=/usr/lib/android -ldl -L. -llog
 
 build: $(OBJECTS)
-	c++ $^ -o $(NAME).so.${UPSTREAM_LIBVERSION} $(LDFLAGS)
-	ar rs $(NAME).a $^
-	ln -s $(NAME).so.${UPSTREAM_LIBVERSION} $(NAME).so
-	ln -s $(NAME).so.${UPSTREAM_LIBVERSION} $(NAME).so.5
+	$(CXX) $^ -o $(NAME).so.$(ANDROID_LIBVERSION) $(LDFLAGS)
+	$(AR) rs $(NAME).a $^
+	ln -s $(NAME).so.$(ANDROID_LIBVERSION) $(NAME).so
+	ln -s $(NAME).so.$(ANDROID_LIBVERSION) $(NAME).so.$(ANDROID_SOVERSION)
 
 clean:
-	rm -f *.so* *.a *.o
+	$(RM) $(OBJECTS)
 
 $(OBJECTS): %.o: %.cpp
-	c++ $< -o $@ $(CXXFLAGS) $(CPPFLAGS)
+	$(CXX) $< -o $@ $(CXXFLAGS) $(CPPFLAGS)

@@ -1,1 +1,1 @@
-core/libbacktrace/libbacktrace.so.*   usr/lib/android
+libbacktrace.so.*   usr/lib/android

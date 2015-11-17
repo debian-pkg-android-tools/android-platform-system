@@ -1,1 +1,1 @@
-extra/ext4_utils/libext4_utils.so.*   usr/lib/android
+libext4_utils.so.*   usr/lib/android

@@ -1,12 +1,10 @@
-include ../../debian/android_includes.mk
-
 NAME = libcutils
 SOURCES = hashmap.c \
           atomic.c \
           native_handle.c \
           config_utils.c \
-          cpu_info.c \
           load_file.c \
+          strlcpy.c \
           open_memstream.c \
           strdup16to8.c \
           strdup8to16.c \
@@ -16,6 +14,7 @@ SOURCES = hashmap.c \
           sched_policy.c \
           iosched_policy.c \
           str_parms.c \
+          fs_config.c \
           fs.c \
           multiuser.c \
           socket_inaddr_any_server.c \
@@ -26,21 +25,23 @@ SOURCES = hashmap.c \
           socket_network_client.c \
           sockets.c \
           ashmem-host.c \
+          trace-host.c \
           dlmalloc_stubs.c
+SOURCES := $(foreach source, $(SOURCES), core/libcutils/$(source))
 OBJECTS = $(SOURCES:.c=.o)
-CFLAGS += -fPIC -c -DANDROID_SMP=0
-CPPFLAGS += $(ANDROID_INCLUDES) -I../include
-LDFLAGS += -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android \
-           -Wl,-soname,$(NAME).so.5 -lpthread -lbsd -L../liblog -llog
+CFLAGS += -fPIC -c
+CPPFLAGS += -include core/include/arch/linux-$(CPU)/AndroidConfig.h -Icore/include
+LDFLAGS += -fPIC -shared -Wl,-soname,$(NAME).so.$(ANDROID_SOVERSION) \
+           -Wl,-rpath=/usr/lib/android -lpthread -L. -llog
 
 build: $(OBJECTS)
-	cc $^ -o $(NAME).so.${UPSTREAM_LIBVERSION} $(LDFLAGS)
-	ar rs $(NAME).a $^
-	ln -s $(NAME).so.${UPSTREAM_LIBVERSION} $(NAME).so
-	ln -s $(NAME).so.${UPSTREAM_LIBVERSION} $(NAME).so.5
+	$(CC) $^ -o $(NAME).so.$(ANDROID_LIBVERSION) $(LDFLAGS)
+	$(AR) rs $(NAME).a $^
+	ln -s $(NAME).so.$(ANDROID_LIBVERSION) $(NAME).so
+	ln -s $(NAME).so.$(ANDROID_LIBVERSION) $(NAME).so.$(ANDROID_SOVERSION)
 
 clean:
-	rm -f *.so* *.a *.o
+	$(RM) $(OBJECTS)
 
 $(OBJECTS): %.o: %.c
-	cc $< -o $@ $(CFLAGS) $(CPPFLAGS)
+	$(CC) $< -o $@ $(CFLAGS) $(CPPFLAGS)

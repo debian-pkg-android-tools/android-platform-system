@@ -1,5 +1,3 @@
-include ../../debian/android_includes.mk
-
 NAME = libext4_utils
 SOURCES = make_ext4fs.c \
           ext4fixup.c \
@@ -8,30 +6,28 @@ SOURCES = make_ext4fs.c \
           contents.c \
           extent.c \
           indirect.c \
-          uuid.c \
           sha1.c \
           wipe.c \
           crc16.c \
           ext4_sb.c
+SOURCES := $(foreach source, $(SOURCES), extras/ext4_utils/$(source))
 OBJECTS = $(SOURCES:.c=.o)
 CFLAGS += -fPIC -c
-CPPFLAGS += $(ANDROID_INCLUDES) \
-            -I../../core/include \
-            -I../../core/libsparse/include \
+CPPFLAGS += -include core/include/arch/linux-$(CPU)/AndroidConfig.h \
+            -Icore/include \
+            -Icore/libsparse/include \
             -I/usr/include/android
-LDFLAGS += -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android \
-           -Wl,-soname,$(NAME).so.5 -lz \
-           -L../../core/libsparse -lsparse \
-           -L/usr/lib/android -lselinux
+LDFLAGS += -fPIC -shared -Wl,-soname,$(NAME).so.$(ANDROID_SOVERSION) \
+           -Wl,-rpath=/usr/lib/android -L. -lsparse -L/usr/lib/android -lselinux
 
 build: $(OBJECTS)
-	cc $^ -o $(NAME).so.${UPSTREAM_LIBVERSION} $(LDFLAGS)
-	ar rs $(NAME).a $^
-	ln -s $(NAME).so.${UPSTREAM_LIBVERSION} $(NAME).so
-	ln -s $(NAME).so.${UPSTREAM_LIBVERSION} $(NAME).so.5
+	$(CC) $^ -o $(NAME).so.$(ANDROID_LIBVERSION) $(LDFLAGS)
+	$(AR) rs $(NAME).a $^
+	ln -s $(NAME).so.$(ANDROID_LIBVERSION) $(NAME).so
+	ln -s $(NAME).so.$(ANDROID_LIBVERSION) $(NAME).so.$(ANDROID_SOVERSION)
 
 clean:
-	rm -f *.so* *.a *.o
+	$(RM) $(OBJECTS)
 
 $(OBJECTS): %.o: %.c
-	cc $< -o $@ $(CFLAGS) $(CPPFLAGS)
+	$(CC) $< -o $@ $(CFLAGS) $(CPPFLAGS)

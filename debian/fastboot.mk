@@ -1,23 +1,30 @@
-include ../../debian/android_includes.mk
-
 NAME = fastboot
-SOURCES = protocol.c engine.c bootimg.c fastboot.c util.c fs.c usb_linux.c util_linux.c
-CFLAGS += -fPIC -std=gnu99 -DUSE_F2FS
-CPPFLAGS += $(ANDROID_INCLUDES) \
-            -I../include \
-            -I../mkbootimg \
-            -I../../extra/ext4_utils \
-            -I../../extra/f2fs_utils \
+SOURCES = protocol.c engine.c bootimg_utils.cpp fastboot.cpp util.c fs.c usb_linux.c util_linux.c
+CSOURCES = $(foreach source, $(filter %.c, $(SOURCES)), core/fastboot/$(source))
+CXXSOURCES = $(foreach source, $(filter %.cpp, $(SOURCES)), core/fastboot/$(source))
+COBJECTS = $(CSOURCES:.c=.o)
+CXXOBJECTS = $(CXXSOURCES:.cpp=.o)
+CFLAGS += -c -fPIC
+CXXFLAGS += -c -fPIC -fpermissive
+CPPFLAGS += -DUSE_F2FS -DFASTBOOT_REVISION='"debian"' \
+            -include core/include/arch/linux-$(CPU)/AndroidConfig.h \
+            -Icore/include \
+            -Icore/mkbootimg \
+            -Iextras/ext4_utils \
+            -Iextras/f2fs_utils \
             -I/usr/include/openssl \
-            -I../libsparse/include
-LDFLAGS += -fPIC -rdynamic -Wl,-rpath=/usr/lib/android -ldl -lz \
-           -L../libzipfile -lzipfile \
-           -L../../extra/ext4_utils -lext4_utils \
-           -L../libsparse -lsparse \
-           -L../../extra/f2fs_utils -lf2fs_utils
+            -Icore/libsparse/include
+LDFLAGS += -fPIC -Wl,-rpath=/usr/lib/android -Wl,-rpath-link=. \
+           -L. -lziparchive -lext4_utils -lsparse -lf2fs_utils
 
-build: $(SOURCES)
-	cc $^ -o $(NAME) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)
+build: $(COBJECTS) $(CXXOBJECTS)
+	$(CC) $^ -o $(NAME) $(LDFLAGS)
 
 clean:
-	rm -f $(NAME)
+	$(RM) $(NAME) $(COBJECTS) $(CXXOBJECTS)
+
+$(CXXOBJECTS): %.o: %.cpp
+	$(CXX) $< -o $@ $(CXXFLAGS) $(CPPFLAGS)
+
+$(COBJECTS): %.o: %.c
+	$(CC) $< -o $@ $(CFLAGS) $(CPPFLAGS)

@@ -5,8 +5,8 @@ Description:
   directly use the functions in the linked library directly.
 Author: Kai-Chung Yan <seamlikok@gmail.com>
 Last-Update: 2015-08-02
---- a/extra/f2fs_utils/f2fs_dlutils.c
-+++ b/extra/f2fs_utils/f2fs_dlutils.c
+--- a/extras/f2fs_utils/f2fs_dlutils.c
++++ b/extras/f2fs_utils/f2fs_dlutils.c
 @@ -37,29 +37,6 @@
  #include <f2fs_format_utils.h>
  #define F2FS_DYN_LIB "libf2fs_fmt_host_dyn.so"

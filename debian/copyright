@@ -11,51 +11,33 @@ License: Apache-2.0
 
 Files: core/fastboot/*.c
        core/fastboot/*.h
-       core/fastbootd/bootimg.h
-       core/include/cutils/atomic-arm64.h
-       core/include/cutils/atomic-x86_64.h
-       core/include/utils/LinearAllocator.h
        core/libpixelflinger/codeflinger/Arm64Assembler.cpp
        core/libpixelflinger/codeflinger/Arm64Assembler.h
        core/libpixelflinger/codeflinger/Arm64Disassembler.cpp
        core/libpixelflinger/codeflinger/Arm64Disassembler.h
        core/libpixelflinger/tests/arch-arm64/*
        core/libpixelflinger/tests/gglmul/*
-       core/libutils/LinearAllocator.cpp
        core/toolbox/bsd-compatibility.h
-       core/toolbox/pwcache.c
-       extra/f2fs_utils/f2fs_dlutils.c
-       extra/f2fs_utils/f2fs_ioutils.c
-       extra/f2fs_utils/f2fs_utils.c
-       extra/tests/bionic/*.c
-       extra/tests/bionic/*.cpp
-       extra/tests/bionic/*.h
-       extra/tests/sdcard/*.cpp
-       extra/tests/sdcard/*.h
+       extras/f2fs_utils/f2fs_dlutils.c
+       extras/f2fs_utils/f2fs_ioutils.c
+       extras/f2fs_utils/f2fs_utils.c
+       extras/tests/bionic/*.c
+       extras/tests/sdcard/*.cpp
+       extras/tests/sdcard/*.h
 Copyright: 2008-2014, The Android Open Source Project
 License: BSD-2-clause
 
 Files: core/include/mincrypt/*
        core/libmincrypt/*.c
-       core/toolbox/clear.c
        core/toolbox/iftop.c
        core/toolbox/log.c
        core/toolbox/lsof.c
-       core/toolbox/mknod.c
-       core/toolbox/netstat.c
        core/toolbox/prlimit.c
-       core/toolbox/readlink.c
        core/toolbox/renice.c
-       core/toolbox/route.c
        core/toolbox/top.c
        core/toolbox/uptime.c
-       core/toolbox/vmstat.c
-       extra/cpustats/cpustats.c
+       extras/cpustats/cpustats.c
 Copyright: 2008-2014, The Android Open Source Project
-License: BSD-3-clause
-
-Files: core/fastbootd/*
-Copyright: 2009-2013, Google Inc. <google.com>
 License: BSD-3-clause
 
 Files: core/include/cutils/ashmem.h
@@ -122,7 +104,7 @@ Copyright: 1999, James Howard and Dag-Erling Coïdan Smørgrav
 License: BSD-2-clause
 
 Files: core/libsparse/sparse_crc32.c
-       extra/ext4_utils/crc16.c
+       extras/ext4_utils/crc16.c
 Copyright: 1986, Gary S. Brow
 License: BSD-2-clause
 

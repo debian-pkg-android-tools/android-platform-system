@@ -1,0 +1,38 @@
+--- a/core/include/utils/RefBase.h
++++ b/core/include/utils/RefBase.h
+@@ -17,7 +17,9 @@
+ #ifndef ANDROID_REF_BASE_H
+ #define ANDROID_REF_BASE_H
+ 
+-#include <cutils/atomic.h>
++extern "C" {
++#include "cutils_atomic.h"
++}
+ 
+ #include <stdint.h>
+ #include <sys/types.h>
+--- a/core/include/utils/StrongPointer.h
++++ b/core/include/utils/StrongPointer.h
+@@ -17,7 +17,9 @@
+ #ifndef ANDROID_STRONG_POINTER_H
+ #define ANDROID_STRONG_POINTER_H
+ 
+-#include <cutils/atomic.h>
++extern "C" {
++#include "cutils_atomic.h"
++}
+ 
+ #include <stdint.h>
+ #include <sys/types.h>
+--- a/core/include/utils/Atomic.h
++++ b/core/include/utils/Atomic.h
+@@ -17,6 +17,8 @@
+ #ifndef ANDROID_UTILS_ATOMIC_H
+ #define ANDROID_UTILS_ATOMIC_H
+ 
+-#include <cutils/atomic.h>
++extern "C" {
++#include "cutils_atomic.h"
++}
+ 
+ #endif // ANDROID_UTILS_ATOMIC_H

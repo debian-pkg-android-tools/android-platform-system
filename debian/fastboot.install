@@ -1,1 +1,1 @@
-core/fastboot/fastboot     usr/bin
+fastboot   usr/lib/android-sdk/platform-tools

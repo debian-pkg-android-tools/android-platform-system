@@ -1,12 +1,8 @@
-include ../../debian/android_includes.mk
-
 NAME = libutils
 SOURCES = BasicHashtable.cpp \
-          BlobCache.cpp \
           CallStack.cpp \
           FileMap.cpp \
           JenkinsHash.cpp \
-          LinearAllocator.cpp \
           LinearTransform.cpp \
           Log.cpp \
           NativeHandle.cpp \
@@ -27,24 +23,24 @@ SOURCES = BasicHashtable.cpp \
           VectorImpl.cpp \
           misc.cpp \
           Looper.cpp
+SOURCES := $(foreach source, $(SOURCES), core/libutils/$(source))
 OBJECTS = $(SOURCES:.cpp=.o)
-CXXFLAGS += -fPIC -c -DLIBUTILS_NATIVE=1
-CPPFLAGS += $(ANDROID_INCLUDES) -I../include -I../../libnativehelper/include/nativehelper
-LDFLAGS += -fPIC -shared -rdynamic -Wl,-rpath=/usr/lib/android \
-           -Wl,-soname,$(NAME).so.5 -lrt -ldl -lpthread \
-           -L../liblog -llog \
-           -L../../libnativehelper -lnativehelper \
-           -L../libcutils -lcutils \
-           -L../libbacktrace -lbacktrace
+CXXFLAGS += -fPIC -c -std=gnu++11
+CPPFLAGS += -include core/include/arch/linux-$(CPU)/AndroidConfig.h \
+            -Icore/include -Idebian -Ilibnativehelper/include/nativehelper \
+            -DLIBUTILS_NATIVE=1
+LDFLAGS += -fPIC -shared -Wl,-soname,$(NAME).so.$(ANDROID_SOVERSION) \
+           -Wl,-rpath=/usr/lib/android \
+           -lpthread -L. -llog -lcutils -lbacktrace
 
 build: $(OBJECTS)
-	c++ $^ -o $(NAME).so.${UPSTREAM_LIBVERSION} $(LDFLAGS)
-	ar rs $(NAME).a $^
-	ln -s $(NAME).so.${UPSTREAM_LIBVERSION} $(NAME).so
-	ln -s $(NAME).so.${UPSTREAM_LIBVERSION} $(NAME).so.5
+	$(CXX) $(OBJECTS) -o $(NAME).so.$(ANDROID_LIBVERSION) $(LDFLAGS)
+	$(AR) rs $(NAME).a $(OBJECTS)
+	ln -s $(NAME).so.$(ANDROID_LIBVERSION) $(NAME).so
+	ln -s $(NAME).so.$(ANDROID_LIBVERSION) $(NAME).so.$(ANDROID_SOVERSION)
 
 clean:
-	rm -f *.so* *.a *.o
+	$(RM) $(OBJECTS)
 
 $(OBJECTS): %.o: %.cpp
-	c++ $< -o $@ $(CXXFLAGS) $(CPPFLAGS)
+	$(CXX) $< -o $@ $(CXXFLAGS) $(CPPFLAGS)

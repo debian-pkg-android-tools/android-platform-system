@@ -1,0 +1,25 @@
+Description: liblog uses android_set_abort_message() which is in Bionic's libc
+Author: Kai-Chung Yan <seamlikok@gmail.com>
+Last-Update: 2015-11-16
+--- a/core/liblog/logd_write_kern.c
++++ b/core/liblog/logd_write_kern.c
+@@ -26,8 +26,6 @@
+ #include <time.h>
+ #include <unistd.h>
+ 
+-#include <android/set_abort_message.h>
+-
+ #include <log/log.h>
+ #include <log/logd.h>
+ #include <log/logger.h>
+@@ -167,10 +165,6 @@
+             tag = tmp_tag;
+     }
+ 
+-    if (prio == ANDROID_LOG_FATAL) {
+-        android_set_abort_message(msg);
+-    }
+-
+     vec[0].iov_base   = (unsigned char *) &prio;
+     vec[0].iov_len    = 1;
+     vec[1].iov_base   = (void *) tag;

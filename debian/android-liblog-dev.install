@@ -1,4 +1,4 @@
 core/include/android/log.h usr/include/android/android
 core/include/log           usr/include/android
-core/liblog/*.a            usr/lib/android
-core/liblog/*.so           usr/lib/android
+liblog.a                   usr/lib/android
+liblog.so                  usr/lib/android

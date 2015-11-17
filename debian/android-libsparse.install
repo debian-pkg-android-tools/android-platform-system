@@ -1,1 +1,1 @@
-core/libsparse/libsparse.so.*   usr/lib/android
+libsparse.so.*   usr/lib/android

@@ -1,3 +1,0 @@
-core/include/zipfile usr/include/android
-core/libzipfile/*.a  usr/lib/android
-core/libzipfile/*.so usr/lib/android

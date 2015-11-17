@@ -1,19 +1,42 @@
 #!/usr/bin/make -f
 
+include /usr/share/dpkg/architecture.mk
 include /usr/share/dpkg/pkg-info.mk
 
+export DEB_HOST_ARCH_CPU
+
+include debian/detect_arch.mk
+
 UPSTREAM_TAG = android-$(subst +,_,$(DEB_VERSION_UPSTREAM))
-export UPSTREAM_LIBVERSION = 5.1.1.8
+export ANDROID_LIBVERSION = $(subst +r,.,$(DEB_VERSION_UPSTREAM))
+export ANDROID_SOVERSION = $(shell echo $(ANDROID_LIBVERSION) | cut -c-1)
+
+# ORDER IS IMPORTANT!
+COMPONENTS = liblog \
+             libnativehelper \
+             libcutils \
+             libbase \
+             libbacktrace \
+             libutils \
+             libziparchive \
+             libsparse \
+             libf2fs_utils \
+             libext4_utils \
+             libadb \
+             adb \
+             fastboot
 
 %:
 	dh $@
 
 override_dh_auto_build:
-	make -f debian/Makefile
+	$(foreach makefile, $(COMPONENTS), make -f debian/$(makefile).mk;)
 
 override_dh_auto_clean:
 	dh_auto_clean
-	make clean -f debian/Makefile
+	echo shit
+	$(foreach makefile, $(COMPONENTS), make clean -f debian/$(makefile).mk;)
+	rm -f *.so* *.a
 
 get-orig-source: core.tar.gz extras.tar.gz build.tar.gz libnativehelper.tar.gz
 	mkdir -p android-platform-system-$(DEB_VERSION_UPSTREAM)/core
